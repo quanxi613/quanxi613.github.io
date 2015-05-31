@@ -42,7 +42,7 @@ S">
 <meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg9.png">
 <meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg10.png">
 <meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg11.png">
-<meta property="og:updated_time" content="2015-05-31T08:26:57.000Z">
+<meta property="og:updated_time" content="2015-05-31T08:37:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVG初探">
 <meta name="twitter:description" content="最近看到一篇很有趣的关于动画的文章，想拿来做个练习，里面用到了SVG，所以花了一些时间了解了一下SVG，在这里做一个记录，方便自查
@@ -285,7 +285,7 @@ var _hmt = _hmt || [];
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"0"</span> <span class="variable">y=</span><span class="string">"0"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
 <p>这个矩形自身有一个坐标系，rect里的x,y,width,height等属性都是根据其自身坐标系来定义的。</p>
 <p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg-9.png" alt=""></p>
-<p>图中蓝色的坐标系就是rect的自身坐标系</p>
+<p>图中绿色的坐标系就是rect的自身坐标系</p>
 <ul>
 <li>前驱坐标系</li>
 </ul>
@@ -293,7 +293,7 @@ var _hmt = _hmt || [];
 <p>坐标变换实际上就是前驱坐标系经过一系列变换之后得到自身坐标系的过程。</p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"0"</span> <span class="variable">y=</span><span class="string">"0"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">transform=</span><span class="string">"translate(50,50)"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
 <p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg9.png" alt=""></p>
-<p>经过transform进行水平和竖直方向的50px的坐标偏移之后，rect的自身坐标系就跑到了上图中蓝色坐标系的位置。若rect的属性x,y分别有值，比如x=”10”,y=”10”，则是相对于自身坐标系而言的。</p>
+<p>经过transform进行水平和竖直方向的50px的坐标偏移之后，rect的自身坐标系就跑到了上图中绿色坐标系的位置。若rect的属性x,y分别有值，比如x=”10”,y=”10”，则是相对于自身坐标系而言的。</p>
 <ul>
 <li>参考坐标系</li>
 </ul>
@@ -347,7 +347,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://quanxi613.github.io/2015/05/31/svg-learning/" data-id="ciac7pbzv0003p1xrzk95vj0f" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://quanxi613.github.io/2015/05/31/svg-learning/" data-id="ciac7t92g0003pmxrj76f9r9n" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
