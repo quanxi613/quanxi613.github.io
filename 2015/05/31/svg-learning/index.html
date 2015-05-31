@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SVG初探 | quanxi613的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近看到一篇很有趣的关于动画的文章，想拿来做个练习，里面用到了SVG，所以花了一些时间了解了一下SVG，在这里做一个记录，方便自查
+SVG是神马？
+SVG指可伸缩矢量图
+用来定义基于矢量的网络图形
+使用XML格式来定义
+在放大或缩小的情况下，图形质量不受影响
+在2013年成为W3C推荐标准
+浏览器支持情况：IE9+，chrome 33.0+，Firefox 28.0+，Safari 7.0+
+
+S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVG初探">
+<meta property="og:url" content="http://quanxi613.github.io/2015/05/31/svg-learning/index.html">
+<meta property="og:site_name" content="quanxi613的博客">
+<meta property="og:description" content="最近看到一篇很有趣的关于动画的文章，想拿来做个练习，里面用到了SVG，所以花了一些时间了解了一下SVG，在这里做一个记录，方便自查
+SVG是神马？
+SVG指可伸缩矢量图
+用来定义基于矢量的网络图形
+使用XML格式来定义
+在放大或缩小的情况下，图形质量不受影响
+在2013年成为W3C推荐标准
+浏览器支持情况：IE9+，chrome 33.0+，Firefox 28.0+，Safari 7.0+
+
+S">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg1.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg1.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg2.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg3.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg4.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg5.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg7.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg8.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg-9.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg9.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg10.png">
+<meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg11.png">
+<meta property="og:updated_time" content="2015-05-31T08:26:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVG初探">
+<meta name="twitter:description" content="最近看到一篇很有趣的关于动画的文章，想拿来做个练习，里面用到了SVG，所以花了一些时间了解了一下SVG，在这里做一个记录，方便自查
+SVG是神马？
+SVG指可伸缩矢量图
+用来定义基于矢量的网络图形
+使用XML格式来定义
+在放大或缩小的情况下，图形质量不受影响
+在2013年成为W3C推荐标准
+浏览器支持情况：IE9+，chrome 33.0+，Firefox 28.0+，Safari 7.0+
+
+S">
+  
+    <link rel="alternative" href="/atom.xml" title="quanxi613的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f5426eb8e9063d338b5650a92e8690aa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End baidu Analytics -->
+
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">    
+    <div id="header-title" class="inner">     
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">quanxi613的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/quanxi613" target="_blank" title="github"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="quanxi613.github.io">
+        </form>
+      </div>
+    </div>
+    <a href="#" class="avatar-wrap">
+      <img src="/img/avatar.jpg" class="avatar" alt="">
+    </a>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-svg-learning" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/31/svg-learning/" class="article-date">
+  <time datetime="2015-05-30T16:00:00.000Z" itemprop="datePublished">2015-05-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SVG/">SVG</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SVG初探
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近看到一篇很有趣的关于动画的文章，想拿来做个练习，里面用到了SVG，所以花了一些时间了解了一下SVG，在这里做一个记录，方便自查</p>
+<h2 id="SVG是神马？">SVG是神马？</h2><ul>
+<li>SVG指可伸缩矢量图</li>
+<li>用来定义基于矢量的网络图形</li>
+<li>使用XML格式来定义</li>
+<li>在放大或缩小的情况下，图形质量不受影响</li>
+<li>在2013年成为W3C推荐标准</li>
+<li>浏览器支持情况：IE9+，chrome 33.0+，Firefox 28.0+，Safari 7.0+</li>
+</ul>
+<h2 id="SVG使用方式">SVG使用方式</h2><h3 id="浏览器直接打开">浏览器直接打开</h3><p><code>.svg</code>文件直接用浏览器打开</p>
+<h3 id="在HTML中使用">在HTML中使用</h3><ul>
+<li>用<code>&lt;iframe&gt;</code>嵌入SVG</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">iframe</span> src=<span class="string">"xx.svg"</span> <span class="attribute">width</span>=<span class="string">"200"</span> <span class="attribute">height</span>=<span class="string">"200"</span> &gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用<code>&lt;img&gt;</code>嵌入SVG</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">img</span> src=<span class="string">"xx.svg"</span>  <span class="attribute">width</span>=<span class="string">"300"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用CSS背景图的方式嵌入SVG</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">div</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(<span class="string">'xx.svg'</span>) no-repeat center</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">background-size </span>:<span class="value"> <span class="number">200px</span> <span class="number">200px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接使用<code>&lt;svg&gt;</code>元素</li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg <span class="variable">width=</span><span class="string">"600px"</span> <span class="variable">height=</span><span class="string">"300px"</span> <span class="variable">viewBox=</span><span class="string">"0 0 250 250"</span>&gt;</span><br><span class="line">  &lt;circle <span class="variable">cx=</span><span class="string">"35"</span> <span class="variable">cy=</span><span class="string">"35"</span> <span class="variable">r=</span><span class="string">"35"</span> <span class="variable">style=</span><span class="string">"stroke: black; fill: none;"</span>/&gt;</span><br><span class="line">  &lt;rect <span class="variable">x=</span><span class="string">"150"</span> <span class="variable">y=</span><span class="string">"50"</span> <span class="variable">width=</span><span class="string">"200"</span> <span class="variable">height=</span><span class="string">"100"</span> <span class="variable">style=</span><span class="string">"stroke: blue; </span><br><span class="line">        fill: none;"</span>/&gt;</span><br><span class="line">  &lt;svg <span class="variable">x=</span><span class="string">"150px"</span> <span class="variable">y=</span><span class="string">"50px"</span> <span class="variable">width=</span><span class="string">"200px"</span> <span class="variable">height=</span><span class="string">"100px"</span> <span class="variable">viewBox=</span><span class="string">"0 0 125 125"</span> <span class="variable">preserveAspectRatio=</span><span class="string">"xMaxYMax meet"</span>&gt;</span><br><span class="line">    &lt;circle <span class="variable">cx=</span><span class="string">"35"</span> <span class="variable">cy=</span><span class="string">"35"</span> <span class="variable">r=</span><span class="string">"35"</span> <span class="variable">style=</span><span class="string">"stroke: black; fill: rgba(0,0,0,.5);"</span>/&gt;</span><br><span class="line">  &lt;/svg&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>后面还有两种embed和object方式，不建议使用，就不做介绍了。</p>
+<p>常用<code>&lt;img&gt;</code>和<code>&lt;svg&gt;</code>，做背景图时用<code>background-image</code>引入</p>
+<h2 id="SVG结构">SVG结构</h2><h3 id="-svg文件"><code>.svg</code>文件</h3><p>常见写法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0"?&gt;</span> //XML声明</span><br><span class="line"><span class="doctype">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span> <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> <span class="attribute">width</span>=<span class="value">"600"</span> <span class="attribute">height</span>=<span class="value">"300"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- SVG代码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br><span class="line">//xmlns="http://www.w3.org/2000/svg"是声明空间</span><br></pre></td></tr></table></figure>
+<h3 id="直接在HTML中使用&lt;svg&gt;">直接在HTML中使用<code>&lt;svg&gt;</code></h3><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg <span class="variable">width=</span><span class="string">"600px"</span> <span class="variable">height=</span><span class="string">"300px"</span> <span class="variable">viewBox=</span><span class="string">"0 0 250 250"</span>&gt;</span><br><span class="line">  &lt;circle <span class="variable">cx=</span><span class="string">"35"</span> <span class="variable">cy=</span><span class="string">"35"</span> <span class="variable">r=</span><span class="string">"35"</span> <span class="variable">style=</span><span class="string">"stroke: black; fill: none;"</span>/&gt;</span><br><span class="line">  &lt;rect <span class="variable">x=</span><span class="string">"150"</span> <span class="variable">y=</span><span class="string">"50"</span> <span class="variable">width=</span><span class="string">"200"</span> <span class="variable">height=</span><span class="string">"100"</span> <span class="variable">style=</span><span class="string">"stroke: blue; </span><br><span class="line">        fill: none;"</span>/&gt;</span><br><span class="line">  &lt;svg <span class="variable">x=</span><span class="string">"150px"</span> <span class="variable">y=</span><span class="string">"50px"</span> <span class="variable">width=</span><span class="string">"200px"</span> <span class="variable">height=</span><span class="string">"100px"</span> <span class="variable">viewBox=</span><span class="string">"0 0 125 125"</span> <span class="variable">preserveAspectRatio=</span><span class="string">"xMaxYMax meet"</span>&gt;</span><br><span class="line">    &lt;circle <span class="variable">cx=</span><span class="string">"35"</span> <span class="variable">cy=</span><span class="string">"35"</span> <span class="variable">r=</span><span class="string">"35"</span> <span class="variable">style=</span><span class="string">"stroke: black; fill: rgba(0,0,0,.5);"</span>/&gt;</span><br><span class="line">  &lt;/svg&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>注意不用再写XML声明了。</p>
+<h2 id="SVG图形、属性及基本操作">SVG图形、属性及基本操作</h2><h3 id="基本图形">基本图形</h3><ul>
+<li>矩形<code>&lt;rect&gt;</code></li>
+<li>圆形<code>&lt;circle&gt;</code></li>
+<li>椭圆<code>&lt;ellipse&gt;</code></li>
+<li>线<code>&lt;line&gt;</code></li>
+<li>折线<code>&lt;polyline&gt;</code></li>
+<li>多边形<code>&lt;polygon&gt;</code></li>
+<li>路径<code>&lt;path&gt;</code> 后面会重点介绍</li>
+</ul>
+<h3 id="基本属性">基本属性</h3><ul>
+<li>fill 填充颜色（rgb 值、颜色名或者十六进制值）</li>
+<li>stroke 定义图形边框的颜色</li>
+<li>stroke-width 定义图形边框的宽度</li>
+<li>transform 声明自身坐标相对父级坐标系的变换，很重要的属性，后面会深入探讨</li>
+</ul>
+<h3 id="基本操作">基本操作</h3><ul>
+<li>创建图形，<code>document.createElementNS(ns, tagName)</code>, ns是svg的命名空间</li>
+<li>添加图形，<code>element.appendChild(childElement)</code></li>
+<li>设置/获取属性，<code>element.setAttrbute(name, value)</code>，<code>element.getAttribute(name)</code></li>
+</ul>
+<p>比如：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> SVG_NS = <span class="string">'http://www.w3.org/2000/svg'</span>;</span><br><span class="line"><span class="reserved">var</span> svg = <span class="built_in">document</span>.createElementNS(SVG_NS, <span class="string">'svg'</span>);</span><br><span class="line">svg.setAttribute(<span class="string">'width'</span>, <span class="string">'100%'</span>);</span><br><span class="line">svg.setAttribute(<span class="string">'height'</span>, <span class="string">'100%'</span>);</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'svg-wrap'</span>).appendChild(svg);</span><br></pre></td></tr></table></figure>
+<h2 id="坐标系统">坐标系统</h2><p>重点来了，SVG的坐标系统</p>
+<p>首先介绍一下SVG两个很重要的概念：viewport,viewBox</p>
+<h3 id="viewport">viewport</h3><p>viewport，也可以叫做视窗，表示SVG可见区域的大小，超出这个区域的图形将不被显示出来，相当于将要作画的画板大小，在<code>&lt;svg&gt;</code>中通过<code>width</code>和<code>height</code>来控制SVG的viewport的大小，注：若不加单位，则默认为px</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg <span class="variable">width=</span><span class="string">"400"</span> <span class="variable">height=</span><span class="string">"200"</span> <span class="variable">style=</span><span class="string">"border:1px solid #7798CB"</span>&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"30"</span> <span class="variable">y=</span><span class="string">"10"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>效果如下，在svg可视区范围内，也就是viewport里的坐标为（30,10）的地方放了一个绿色矩形：</p>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg1.png" alt=""></p>
+<h3 id="viewBox">viewBox</h3><p>viewBox, 也可以叫视野，这个矩形区域定义了我们要如何去观看svg在viewport上渲染出来的世界，借用张鑫旭大神的一个很好的比喻：“SVG就像是我们的显示器屏幕，viewBox就是截屏工具选中的那个框框，最终的呈现就是把框框中的截屏内容再次在显示器中全屏显示”。这个在地图里应用很广泛，类似百度地图，谷歌地图，滑动滚轮就可以让地图放大缩小的效果。</p>
+<p>说了这么多，还是动手写几个例子来体会一下，其中<code>viewBox=&quot;x(左上角横坐标), y（左上角纵坐标）, width, height&quot;</code></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg <span class="variable">width=</span><span class="string">"400"</span> <span class="variable">height=</span><span class="string">"200"</span> <span class="variable">viewBox=</span><span class="string">"0,0,400,200"</span> <span class="variable">style=</span><span class="string">"border:1px solid #7798CB"</span>&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"30"</span> <span class="variable">y=</span><span class="string">"10"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg1.png" alt=""></p>
+<p>因为viewBox的宽高和svg的一样，相当于我透过跟svg一样大的窗户去看svg的世界，所以效果没有任何变化</p>
+<p>修改一下viewBox的宽高</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg <span class="variable">width=</span><span class="string">"400"</span> <span class="variable">height=</span><span class="string">"200"</span> <span class="variable">viewBox=</span><span class="string">"0,0,40,20"</span> <span class="variable">style=</span><span class="string">"border:1px solid #7798CB"</span>&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"30"</span> <span class="variable">y=</span><span class="string">"10"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg2.png" alt=""></p>
+<p>这时，我们看到svg里面的小矩形跑到了svg边框的右下角，同时还被放大到300*150，超出svg的部分不显示，有木有感受到viewBox的巨大威力~~</p>
+<p>这里为啥小矩形会被“挪到”右下角呢，这是因为viewBox的大小是40*20，而且从坐标（0,0）处开始，而rect的坐标是（30,10），那么我用viewBox去圈viewport的时候，rect就会出现在viewBox的右下方。专门做了一张图，帮助理解</p>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg3.png" alt=""></p>
+<p>上图比较形象的解释了小矩形的变化，接着将viewBox在viewport里全屏展示，这时rect的宽高会10倍放大，因为viewBox和viewport的width比例和height比例都是1/10，同时viewBox的宽高比和viewport的宽高比一致，都是2/1，那么rect的宽高都会放大10倍。</p>
+<p>这是一种比较特殊的情况，当然也有两个比例不一样的，这时就会使得图形变形扭曲（因为宽高不能等比例缩放），那么属性<code>preserveAspectRatio</code>就需要用来强制统一缩放比来保持图形的宽高比。</p>
+<h3 id="preserveAspectRatio">preserveAspectRatio</h3><p><code>preserveAspectRatio</code>是svg的一个属性，作用对象是viewBox，值为两个用空格分割的值组合而成。</p>
+<p>作用：用来声明viewBox在视窗viewport中如何定位</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">preserveAspectRatio=<span class="value"><span class="string">"xMidYMid meet"</span></span></span></span><br></pre></td></tr></table></figure>
+<p>第一个值，表示viewBox如何与viewport对齐：</p>
+<ul>
+<li>xMin viewport和viewBox左边对齐</li>
+<li>xMid viewport和viewBox x轴中心对齐</li>
+<li>xMax viewport和viewBox右边对齐</li>
+<li>YMin viewport和viewBox上边缘对齐</li>
+<li>YMid viewport和viewBox y轴中心点对齐</li>
+<li>YMax viewport和viewBox下边缘对齐</li>
+</ul>
+<p>x,y可以自由组合</p>
+<p>第二个值的含义：</p>
+<p>这个参数用来声明是否强制统一缩放，也就是如何来维持宽高比，如果是，那么该方法定义的规则会在viewBox的宽高比不等于viewport宽高比的时候生效。这里我刚看的时候感觉理解上不是很容易，下面就列出我对这个知识点的理解方式，如果有错欢迎大家一起探讨。</p>
+<ul>
+<li>none 在viewBox的宽高比不等于viewport宽高比时，不会保持图形的宽高比，图形会扭曲变形</li>
+<li>meet 默认值，保持图形的宽高比进行缩放，使viewport包含viewBox</li>
+</ul>
+<p>动手写一个例子，帮助理解</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg <span class="variable">width=</span><span class="string">"400"</span> <span class="variable">height=</span><span class="string">"200"</span> <span class="variable">viewBox=</span><span class="string">"0,0,40,40"</span> <span class="variable">preserveAspectRatio=</span><span class="string">"xMidYMid meet"</span> <span class="variable">style=</span><span class="string">"border:1px solid #7798CB"</span>&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"0"</span> <span class="variable">y=</span><span class="string">"0"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg4.png" alt=""></p>
+<p>从图中看到rect被放大到150*75，怎么计算的呢？</p>
+<p>viewBox现在是40<em>40，宽高比为1，而viewport是400</em>200宽高比为2，二者现在不相等，viewport与viewBox的宽度比为：<code>wr=400/40=10/1</code>，高度比为：<code>hr=200/40=5/1</code>，由于指定的是meet，那么就要达到viewport包含viewBox的效果，同时保持viewBox的宽高比，这时viewBox该怎么同时满足这两个条件呢？</p>
+<p>viewBox还是很聪明的，它会按<code>wr</code>和<code>hr</code>中较小的那个值来进行宽高等比例缩放，这样就既能保持宽高比，还能被viewport包含啦~上例中得viewBox及里面的矩形rect的宽高就会都按5倍放大。</p>
+<ul>
+<li>slice 保持viewbox的宽高比，使viewBox包含viewport</li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg <span class="variable">width=</span><span class="string">"400"</span> <span class="variable">height=</span><span class="string">"200"</span> <span class="variable">viewBox=</span><span class="string">"0,0,40,40"</span> <span class="variable">preserveAspectRatio=</span><span class="string">"xMidYMid slice"</span> <span class="variable">style=</span><span class="string">"border:1px solid #7798CB"</span>&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"0"</span> <span class="variable">y=</span><span class="string">"0"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg5.png" alt=""></p>
+<p>现在是slice，那么就需要达到viewBox包含viewport的效果，这时候聪明的viewBox就会选择<code>wr</code>和<code>hr</code>中值较大的那个进行放大（这里是因为viewBox比viewport小，所以需要放大来包含viewport，如果viewBox比viewport大，那么就需要缩小了，依旧乘以比例较大的那个值），也就是放大10倍，此时rect变为300*150，超出viewport的部分不显示，有剪切的效果。</p>
+<h3 id="图形分组">图形分组</h3><ul>
+<li>svg里使用<code>&lt;g&gt;&lt;/g&gt;</code>来创建分组</li>
+<li>在<code>&lt;g&gt;</code>中创建的属性，子元素是可以继承的</li>
+<li>在<code>&lt;g&gt;</code>中可以用<code>transform</code>来定义坐标变换，坐标变换会在后面做详细解释</li>
+<li><code>&lt;g&gt;</code>可以嵌套使用</li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;</span><br><span class="line">    &lt;g <span class="variable">stroke=</span><span class="string">"blue"</span> <span class="variable">fill=</span><span class="string">"none"</span> <span class="variable">transform=</span><span class="string">"translate(0, 50)"</span>&gt;</span><br><span class="line">	    &lt;rect <span class="variable">x=</span><span class="string">"0"</span> <span class="variable">y=</span><span class="string">"0"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> /&gt;</span><br><span class="line">        &lt;circle <span class="variable">cx=</span><span class="string">"65"</span> <span class="variable">cy=</span><span class="string">"75"</span> <span class="variable">r=</span><span class="string">"10"</span> /&gt;</span><br><span class="line">    &lt;/g&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>这么一来就可以通过一个g，来控制包含在里面的所有图形的位置，颜色等属性。控制位移，那么就需要了解svg里的坐标系统了~且听下面的分析介绍~~很重要的概念</p>
+<h3 id="svg的坐标系统">svg的坐标系统</h3><p>svg中的坐标系是这样的：</p>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg7.png" alt=""></p>
+<p>水平向右是x轴的正方向，竖直向下是y轴的正方向，角度的正方向为顺时针方向</p>
+<p>四个比较重要的坐标系：用户坐标系，自身坐标系，前驱坐标系，参考坐标系</p>
+<ul>
+<li>用户坐标系</li>
+</ul>
+<p>svg的坐标系，最原始的坐标系，其他几个坐标系都是从用户坐标系展开的。</p>
+<p>viewBox就是定义了在用户坐标系的哪个位置上看svg，如下图所示</p>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg8.png" alt=""></p>
+<ul>
+<li>自身坐标系</li>
+</ul>
+<p>自身坐标系是图形自身，或者分组的坐标系</p>
+<p>比如</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"0"</span> <span class="variable">y=</span><span class="string">"0"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>这个矩形自身有一个坐标系，rect里的x,y,width,height等属性都是根据其自身坐标系来定义的。</p>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg-9.png" alt=""></p>
+<p>图中蓝色的坐标系就是rect的自身坐标系</p>
+<ul>
+<li>前驱坐标系</li>
+</ul>
+<p>前驱坐标系就是父容器的坐标系，上图中，rect的前驱坐标系就是用户坐标系。</p>
+<p>坐标变换实际上就是前驱坐标系经过一系列变换之后得到自身坐标系的过程。</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"0"</span> <span class="variable">y=</span><span class="string">"0"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">transform=</span><span class="string">"translate(50,50)"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg9.png" alt=""></p>
+<p>经过transform进行水平和竖直方向的50px的坐标偏移之后，rect的自身坐标系就跑到了上图中蓝色坐标系的位置。若rect的属性x,y分别有值，比如x=”10”,y=”10”，则是相对于自身坐标系而言的。</p>
+<ul>
+<li>参考坐标系</li>
+</ul>
+<p>选取一个坐标系作为参考坐标系，以此来描述图形的位置</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;</span><br><span class="line">	&lt;rect <span class="variable">x=</span><span class="string">"0"</span> <span class="variable">y=</span><span class="string">"0"</span> <span class="variable">width=</span><span class="string">"30"</span> <span class="variable">height=</span><span class="string">"15"</span> <span class="variable">transform=</span><span class="string">"translate(50,50)"</span> <span class="variable">fill=</span><span class="string">"#5CC26F"</span> /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>还是这个例子，如果我们把用户坐标系作为参考坐标系，那么在参考坐标系下，矩形rect的位置就是（50，50）。</p>
+<h3 id="坐标变换">坐标变换</h3><p>svg中的坐标变换指的是将一个坐标系变换到另一个坐标系的过程描述。</p>
+<p>坐标变换中起到很大作用的一个属性，就是上面用到过的transform</p>
+<p>transform就是定义了前驱坐标系到自身坐标系的一个线性变换</p>
+<p>语法：</p>
+<ul>
+<li><code>translate(&lt;x&gt;,&lt;y&gt;)</code> x代表x轴上的移动的值，y代表y轴上的移动的值。</li>
+<li><code>rotate(&lt;deg&gt;)</code> 按角度deg进行旋转，自身坐标系相对于其前驱坐标系进行旋转</li>
+<li><code>scale(&lt;sx&gt;,&lt;sy&gt;)</code> sx代表沿x轴的缩放值，用来水平延长或者拉伸元素；sy代表沿y轴缩放值，用来垂直延长或者缩放元素。</li>
+<li><code>matrix(&lt;a&gt; &lt;b&gt; &lt;c&gt; &lt;d&gt; &lt;e&gt; &lt;f&gt;)</code>  通过一个有6个值的变换矩阵声明一个变换。matrix(a,b,c,d,e,f)等同于添加变换matrix[a b c d e f]。较少使用。</li>
+</ul>
+<p>注意：如果有连续变换，那么每次的变换都是基于前一个变换后得到的自身坐标系的基础上进行变换。</p>
+<h2 id="path">path</h2><p>路径path表现的是一个图形的外边沿，可以被填充，可以作为笔画，可以作为裁剪路径，或者任意前面三种的组合。path实际上就是用指令来控制画笔，将画笔放到某一个点上，然后拖动画笔，画出直线或曲线。</p>
+<p>path中的属性d用来指定路径位置和形状，指令如下：</p>
+<ul>
+<li>M<br>参数：x y<br>功能：将画笔移动到点(x,y)</li>
+<li>L<br>参数：x y<br>功能：画笔从当前的点绘制线段到点(x,y)</li>
+<li>H<br>参数：x<br>功能：画笔从当前的点绘制水平线段到点(x,y0)</li>
+<li>V<br>参数：y<br>功能：画笔从当前的点绘制竖直线段到点(x0,y)</li>
+<li>A<br>参数：rx ry x-axis-rotation large-arc-flag sweep-flag x y<br>功能：画笔从当前的点绘制一段圆弧到点(x,y)</li>
+<li>C<br>参数：x1 y1, x2 y2, x y<br>功能：画笔从当前的点绘制一段三次贝塞尔曲线到点(x,y)</li>
+<li>S<br>参数：x2 y2, x y<br>功能：光滑版本的三次贝塞尔曲线(省略第一个控制点)<br>注释：1.如果上一个曲线也是贝塞尔曲线，那么在与上一个曲线的交界处，省略的第一个控制点与上一个曲线的第二个控制点关于交界点是镜像关系；2.如果上一个曲线不是贝塞尔曲线，那么会把上一个图形的终点位置作为贝塞尔曲线的第一个控制点</li>
+<li>Q<br>参数：x1 y1, x y<br>功能：绘制二次贝塞尔曲线到点(x,y)</li>
+<li>T<br>参数：x y<br>功能：光滑版本的二次贝塞尔曲线(省略控制点)<br>注释：同S的注释</li>
+<li>Z<br>无参数<br>功能：绘制闭合图形，如果d属性不指定Z命令，则绘制线段，而不是封闭图形。</li>
+</ul>
+<p>注意：命令区分大小写，大写表示坐标参数为绝对位置，小写为相对位置（相对于当前画笔的相对位置）；最后的参数表示最后要到达的位置；上个命令结束的位置就是下一个命令开始的位置；命令可以重复参数表示重复执行同一条命令。</p>
+<p>属性可以连续使用，举个例子：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">path</span> <span class="attribute">d</span>=<span class="value">"M100 100 L150 300 L200 300 Z"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg10.png" alt=""></p>
+<p>首先将画笔放到（100，100）处，然后移动画笔到（150，300）画出直线，然后又画直线到（200，300）,最后在点（100，100）处关闭路径，形成闭合图形。</p>
+<p>说一下弧线参数含义</p>
+<p>A rx ry x-axis-rotation large-arc-flag sweep-flag x y</p>
+<ul>
+<li>rx,ry 指椭圆的两个半轴大小</li>
+<li>x-axis-rotation 指椭圆的x轴与水平方向顺时针方向夹角，可以想像成一个水平的椭圆绕中心点顺时针旋转的角度</li>
+<li>large-arc-flag 表示是否选择弧长较长的那段弧线，1表示大角度弧线，0为小角度弧线</li>
+<li>sweep-flag 确定起点至终点的方向，1为顺时针，0为逆时针</li>
+<li>x,y 弧的终点坐标</li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg <span class="variable">width=</span><span class="string">"100%"</span> <span class="variable">height=</span><span class="string">"1000px"</span> <span class="variable">xmlns=</span><span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span><br><span class="line">		&lt;path <span class="variable">d=</span><span class="string">"M 100 100 h 100 l -100 100 v -100 M 200 100 A 100 100 0 0 1 100 200"</span>  <span class="variable">fill=</span><span class="string">"#fff"</span> <span class="variable">stroke=</span><span class="string">"red"</span>/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg11.png" alt=""></p>
+<p>关于贝塞尔曲线，可以参考<a href="http://www.jasondavies.com/animated-bezier/" target="_blank" rel="external">这里的demo</a>加深理解，里面的起点和终点之间的点，就是贝塞尔曲线的控制点。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://quanxi613.github.io/2015/05/31/svg-learning/" data-id="ciac7pbzv0003p1xrzk95vj0f" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://quanxi613.github.io/2015/05/31/svg-learning/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/05/27/hexo-blog-set/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">hexo搭建github静态博客</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/05/31/svg-learning/" data-title="SVG初探" data-url="http://quanxi613.github.io/2015/05/31/svg-learning/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客搭建/">博客搭建</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/05/31/svg-learning/">SVG初探</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/27/hexo-blog-set/">hexo搭建github静态博客</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/25/jquery-plugin-0/">写一个jquery插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://qiudeqing.com/" target="_blank">qiu的博客</a>
+          </li>
+        
+          <li>
+            <a href="http://lingyu.wang/" target="_blank">天镶的博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 quanxi613<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"quanxi613"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+</body>
+</html>

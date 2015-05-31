@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>写一个jquery插件 | quanxi613的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第一次写jquery插件，在这里做一个记录和积累。
+写jQuery插件的目的主要是对一些重复使用率高的一系列方法或函数做封装，能够提高开发的效率，也方便后期维护
+写插件前需要知道的预备知识jQuery插件有哪几种类型？
+封装对象方法的插件（对象级别）
+这类插件是最常见的一种，即将对象方法进行封装，然后通过选择器获取的jQuery对象进行操作。用法：$(&amp;#39;#id&amp;#39;).myPlugin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写一个jquery插件">
+<meta property="og:url" content="http://quanxi613.github.io/2015/05/25/jquery-plugin-0/index.html">
+<meta property="og:site_name" content="quanxi613的博客">
+<meta property="og:description" content="第一次写jquery插件，在这里做一个记录和积累。
+写jQuery插件的目的主要是对一些重复使用率高的一系列方法或函数做封装，能够提高开发的效率，也方便后期维护
+写插件前需要知道的预备知识jQuery插件有哪几种类型？
+封装对象方法的插件（对象级别）
+这类插件是最常见的一种，即将对象方法进行封装，然后通过选择器获取的jQuery对象进行操作。用法：$(&amp;#39;#id&amp;#39;).myPlugin">
+<meta property="og:updated_time" content="2015-05-31T08:28:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="写一个jquery插件">
+<meta name="twitter:description" content="第一次写jquery插件，在这里做一个记录和积累。
+写jQuery插件的目的主要是对一些重复使用率高的一系列方法或函数做封装，能够提高开发的效率，也方便后期维护
+写插件前需要知道的预备知识jQuery插件有哪几种类型？
+封装对象方法的插件（对象级别）
+这类插件是最常见的一种，即将对象方法进行封装，然后通过选择器获取的jQuery对象进行操作。用法：$(&amp;#39;#id&amp;#39;).myPlugin">
+  
+    <link rel="alternative" href="/atom.xml" title="quanxi613的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f5426eb8e9063d338b5650a92e8690aa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End baidu Analytics -->
+
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">    
+    <div id="header-title" class="inner">     
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">quanxi613的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/quanxi613" target="_blank" title="github"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="quanxi613.github.io">
+        </form>
+      </div>
+    </div>
+    <a href="#" class="avatar-wrap">
+      <img src="/img/avatar.jpg" class="avatar" alt="">
+    </a>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-jquery-plugin-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/25/jquery-plugin-0/" class="article-date">
+  <time datetime="2015-05-24T16:00:00.000Z" itemprop="datePublished">2015-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/jQuery/">jQuery</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      写一个jquery插件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第一次写jquery插件，在这里做一个记录和积累。</p>
+<h2 id="写jQuery插件的目的">写jQuery插件的目的</h2><p>主要是对一些重复使用率高的一系列方法或函数做封装，能够提高开发的效率，也方便后期维护</p>
+<h2 id="写插件前需要知道的预备知识">写插件前需要知道的预备知识</h2><h3 id="jQuery插件有哪几种类型？">jQuery插件有哪几种类型？</h3><ol>
+<li><p>封装对象方法的插件（对象级别）</p>
+<p>这类插件是最常见的一种，即将对象方法进行封装，然后通过选择器获取的jQuery对象进行操作。<br>用法：<code>$(&#39;#id&#39;).myPlugin()</code>。</p>
+</li>
+</ol>
+<ol>
+<li><p>封装全局函数的插件（类级别）</p>
+<p>即将独立的函数加到jquery命名空间下, 拓展jQuery类，典型例子<code>$.ajax()</code><br>用法：<code>$.myPlugin()</code></p>
+</li>
+</ol>
+<h3 id="jQuery插件中的闭包">jQuery插件中的闭包</h3><p>常见的jQuery插件形式如下：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//为了更好的兼容性，开始有个分号</span></span><br><span class="line">;(<span class="function"><span class="keyword">function</span> <span class="params">($)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*你的插件代码*/</span></span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
+<p>利用闭包的特性，避免内部变量影响全局空间，通过形参$将jQuery传递给匿名函数，在插件内部就可以使用$作为jQuery的别名。</p>
+<h3 id="jQuery插件的机制">jQuery插件的机制</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩展第一种类型（即对象级别）的插件</span></span><br><span class="line">jQuery<span class="class">.fn</span><span class="class">.extend</span>()</span><br><span class="line"><span class="comment">//扩展第二种类型（即类级别）的插件</span></span><br><span class="line">jQuery.<span class="function"><span class="title">extend</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<p>extend()方法接受一个Object类型的参数，key值为函数名或方法名，value值为函数主体。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给jQuery对象添加方法，就是对jQuery.prototype扩展，给jQuery类添加成员方法</span></span><br><span class="line">$.fn.extend(&#123; </span><br><span class="line">    getInputText: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">        $(<span class="keyword">this</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">            alert($(<span class="keyword">this</span>).val()); </span><br><span class="line">        &#125;); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//$("#username").getInputText();</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//给jQuery类扩展，相当于给jQuery添加静态方法</span></span><br><span class="line">$.extend(&#123;</span><br><span class="line">　　add: <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;<span class="keyword">return</span> a + b;&#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// $.add(1, 2); //return 3</span></span><br></pre></td></tr></table></figure>
+<p>除了可以扩展jQuery对象，<code>$.extend(default, options)</code>还可以扩展Object对象，用传入的参数options覆盖默认值default。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myPlugin</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> defaults = &#123;</span><br><span class="line">        color: <span class="string">'blue'</span>,</span><br><span class="line">        width: <span class="string">'100'</span></span><br><span class="line">    &#125;;</span><br><span class="line">    options = $.extend(defaults, options);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//myPlugin(&#123;color: 'white'&#125;);</span></span><br><span class="line"><span class="comment">//myPlugin(&#123;color: 'white', width: '200'&#125;);</span></span><br><span class="line"><span class="comment">//myPlugin();</span></span><br></pre></td></tr></table></figure>
+<h2 id="需要注意的问题">需要注意的问题</h2><ul>
+<li><p>插件名推荐命名为<code>jquery.插件名.js</code>，比如<code>jquery.myPlugin.js</code></p>
+</li>
+<li><p>插件内部<code>this</code>的指向为将要执行的jquery对象，而在其他包含callback的jQuery函数里，this指向原生DOM元素。</p>
+</li>
+</ul>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">function</span><span class="list">($)</span> <span class="collection">&#123;</span><br><span class="line">    $.fn.m​​yPlugin = function <span class="list">()</span> <span class="collection">&#123;</span><br><span class="line"></span><br><span class="line">        //此处没有必要将this包在$号中如$<span class="list">(<span class="keyword">this</span>)</span>，因为this已经是一个jQuery对象。</span><br><span class="line">        //$<span class="list">(<span class="keyword">this</span>)</span>等同于 $<span class="list">($<span class="list">(<span class="keyword">'#element'</span>)</span>)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">        this.fadeIn<span class="list">(<span class="keyword">'normal'</span>, function <span class="list">()</span> <span class="collection">&#123;</span><br><span class="line"></span><br><span class="line">            //此处callback函数中this关键字代表一个DOM元素</span><br><span class="line"></span><br><span class="line">        &#125;</span>)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><span class="comment">;</span></span><br><span class="line">&#125;</span>)</span><span class="list">(<span class="keyword">jQuery</span>)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>用this.each对所有元素进行遍历，同时为了保持插件的链式调用，确保插件返回this关键字</li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span><span class="params">($)</span> </span>&#123;</span><br><span class="line">    $.fn.m​​yPlugin = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;  </span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">this</span>.<span class="keyword">each</span>(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//此处是你的插件代码</span></span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>保护好默认参数</li>
+</ul>
+<p>回顾上面讲<code>$.extend(default, options)</code>时举的例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myPlugin</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> defaults = &#123;</span><br><span class="line">        color: <span class="string">'blue'</span>,</span><br><span class="line">        width: <span class="string">'100'</span></span><br><span class="line">    &#125;;</span><br><span class="line">    options = $.extend(defaults, options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种写法不好，调用extend时会改变defaults的值，defaults作为插件默认值应维持原状，若后续想再使用默认值，会发现它已被用户传来的值所更改。<br>所以更好的写法是把一个新的空对象作为extend的第一个参数，接下来是defaults和options，那么所有值合并后保存到了这个空对象上，保护了默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myPlugin</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> defaults = &#123;</span><br><span class="line">        color: <span class="string">'blue'</span>,</span><br><span class="line">        width: <span class="string">'100'</span></span><br><span class="line">    &#125;;</span><br><span class="line">    options = $.extend(&#123;&#125;, defaults, options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="动手编写一个jQuery插件">动手编写一个jQuery插件</h2><p>以分页插件作为练习，体会了上面的知识点，部分地方还有待优化</p>
+<p>首先是HTML结构</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要插入页码的容器</span></span><br><span class="line">&lt;<span class="tag">div</span> id=<span class="string">"pager"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="tag">p</span> class=<span class="string">"page-text"</span>&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>CSS结构</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">* &#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>: <span class="number">0</span>;&#125;</span><br><span class="line"><span class="tag">ul</span> &#123;<span class="attribute">list-style</span>: none;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class">.page</span> &#123;<span class="attribute">height</span>:<span class="number">40px</span>;<span class="attribute">overflow</span>: hidden;<span class="attribute">margin-top</span>: <span class="number">20px</span>;&#125;</span><br><span class="line"><span class="class">.page</span> <span class="tag">li</span> &#123;<span class="attribute">display</span>: inline-block;*<span class="attribute">display</span>: inline;*<span class="attribute">zoom</span>:<span class="number">1</span>;<span class="attribute">border</span>: <span class="number">1px</span> solid <span class="hexcolor">#CCC</span>;<span class="attribute">background-color</span>: <span class="hexcolor">#FFF</span>;<span class="attribute">margin-right</span>: <span class="number">5px</span>;<span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">8px</span>;<span class="attribute">cursor</span>: pointer;&#125;</span><br><span class="line"><span class="class">.page</span> <span class="tag">li</span><span class="pseudo">:hover</span> &#123;<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="hexcolor">#1B4CA6</span>;<span class="attribute">background-color</span>: <span class="hexcolor">#BBD1F9</span>;&#125;</span><br><span class="line"><span class="class">.page</span> <span class="tag">li</span><span class="class">.current</span> &#123;<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="hexcolor">#1B4CA6</span>;<span class="attribute">background-color</span>: <span class="hexcolor">#BBD1F9</span>;&#125;</span><br><span class="line"><span class="class">.page</span> <span class="tag">li</span><span class="class">.disable</span> &#123;<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="hexcolor">#EEE</span>;<span class="attribute">color</span>:<span class="hexcolor">#999</span>;<span class="attribute">cursor</span>: auto;<span class="attribute">background-color</span>: <span class="hexcolor">#FFF</span>;&#125;</span><br><span class="line"><span class="class">.page-text</span> &#123;<span class="attribute">margin-top</span>: <span class="number">10px</span>;&#125;</span><br><span class="line"><span class="class">.page-text</span> <span class="tag">strong</span> &#123;<span class="attribute">color</span>: <span class="hexcolor">#78C6E2</span>;<span class="attribute">margin-left</span>: <span class="number">3px</span>;<span class="attribute">margin-right</span>: <span class="number">3px</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p><code>js</code>的结构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line"> 	<span class="keyword">var</span> defaults = &#123;</span><br><span class="line"> 		pagecurrent: <span class="number">1</span>,   <span class="comment">//当前页码</span></span><br><span class="line"> 		pagecount:<span class="number">1</span>,      <span class="comment">//页码总数</span></span><br><span class="line"> 		first_text: <span class="string">'首页'</span>,  <span class="comment">//首页按钮的文字可自定义</span></span><br><span class="line"> 		prev_text: <span class="string">'上一页'</span>, <span class="comment">//上一页按钮的文字可自定义</span></span><br><span class="line"> 		next_text: <span class="string">'下一页'</span>, <span class="comment">//下一页按钮的文字可自定义</span></span><br><span class="line"> 		last_text: <span class="string">'尾页'</span>,  <span class="comment">//尾页按钮的文字可自定义</span></span><br><span class="line"> 		max_per_page: <span class="number">10</span> <span class="comment">//每屏最多显示多少个页码</span></span><br><span class="line"> 	&#125;;</span><br><span class="line"></span><br><span class="line"> 	$.fn.pager = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line"> 		<span class="keyword">var</span> options = $.extend(&#123;&#125;, defaults, options);</span><br><span class="line"> 		</span><br><span class="line"> 		<span class="keyword">return</span> <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> 			$(<span class="keyword">this</span>).empty().append(renderPage(options));</span><br><span class="line"> 		&#125;);</span><br><span class="line"> 	&#125;</span><br><span class="line"></span><br><span class="line"> 	<span class="function"><span class="keyword">function</span> <span class="title">renderPage</span>(<span class="params">opts</span>) </span>&#123;</span><br><span class="line"> 		<span class="keyword">var</span> pagecurrent = <span class="built_in">parseInt</span>(opts.pagecurrent);</span><br><span class="line"> 		<span class="keyword">var</span> pagecount = <span class="built_in">parseInt</span>(opts.pagecount);</span><br><span class="line"> 		<span class="keyword">var</span> btncallback = opts.btncallback;</span><br><span class="line"> 		<span class="keyword">var</span> max_per_page = <span class="built_in">parseInt</span>(opts.max_per_page);</span><br><span class="line"> 		<span class="keyword">var</span> first_text = opts.first_text;</span><br><span class="line"> 		<span class="keyword">var</span> prev_text = opts.prev_text;</span><br><span class="line"> 		<span class="keyword">var</span> next_text = opts.next_text;</span><br><span class="line"> 		<span class="keyword">var</span> last_text = opts.last_text;</span><br><span class="line"> 		<span class="comment">//页码wrap</span></span><br><span class="line"> 		<span class="keyword">var</span> pageWrap = $(<span class="string">'&lt;ul class="page"&gt;&lt;/ul&gt;'</span>);</span><br><span class="line"> 		<span class="comment">//添加第一页和上一页按钮</span></span><br><span class="line"> 		pageWrap.append(renderBtn(<span class="string">'first'</span>, first_text, pagecurrent, pagecount, btncallback))</span><br><span class="line"> 		.append(renderBtn(<span class="string">'prev'</span>,prev_text, pagecurrent, pagecount, btncallback));</span><br><span class="line"></span><br><span class="line"> 		<span class="comment">//控制一屏最多显示n条页码</span></span><br><span class="line"> 		<span class="keyword">var</span> startNum = <span class="number">1</span>;</span><br><span class="line"> 		<span class="keyword">var</span> endNum = max_per_page;</span><br><span class="line"> 		<span class="keyword">var</span> point = <span class="built_in">Math</span>.ceil((endNum - startNum) / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">if</span> (pagecurrent &gt; point) &#123;</span><br><span class="line"> 			startNum = pagecurrent - point;</span><br><span class="line"> 			endNum = pagecurrent + point;</span><br><span class="line"> 		&#125;</span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">if</span> (endNum &gt; pagecount) &#123;</span><br><span class="line"> 			startNum = pagecount - max_per_page + <span class="number">1</span>;</span><br><span class="line"> 			endNum = pagecount;</span><br><span class="line"> 		&#125;</span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">if</span> (startNum &lt; <span class="number">1</span>) &#123;</span><br><span class="line"> 			startNum = <span class="number">1</span>;</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		<span class="comment">//渲染页码列表</span></span><br><span class="line"> 		<span class="keyword">for</span> (<span class="keyword">var</span> pagenumber = startNum; pagenumber &lt;= endNum; pagenumber++) &#123;</span><br><span class="line"> 			<span class="keyword">var</span> pagebtn = $(<span class="string">'&lt;li&gt;'</span>+ pagenumber +<span class="string">'&lt;/li&gt;'</span>);</span><br><span class="line"> 			<span class="keyword">if</span> (pagenumber == pagecurrent) &#123;</span><br><span class="line"> 				pagebtn.addClass(<span class="string">'current'</span>);</span><br><span class="line"> 			&#125;</span><br><span class="line"> 			<span class="keyword">else</span> &#123;</span><br><span class="line"> 				pagebtn.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> 					btncallback(<span class="keyword">this</span>.innerHTML);</span><br><span class="line"> 				&#125;);</span><br><span class="line"> 			&#125;</span><br><span class="line"> 			pageWrap.append(pagebtn);</span><br><span class="line"> 		&#125;</span><br><span class="line"></span><br><span class="line"> 		<span class="comment">//渲染下一页和尾页按钮</span></span><br><span class="line"> 		pageWrap.append(renderBtn(<span class="string">'next'</span>, next_text, pagecurrent, pagecount, btncallback))</span><br><span class="line"> 		.append(renderBtn(<span class="string">'last'</span>, last_text, pagecurrent, pagecount, btncallback));</span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">return</span> pageWrap;</span><br><span class="line"> 	&#125;</span><br><span class="line">    <span class="comment">//首页，上一页，下一页，尾页按钮的方法</span></span><br><span class="line"> 	<span class="function"><span class="keyword">function</span> <span class="title">renderBtn</span>(<span class="params">btntype, btntext, pagecurrent, pagecount, btncallback</span>) </span>&#123;</span><br><span class="line"> 		<span class="keyword">var</span> button = $(<span class="string">'&lt;li&gt;'</span>+ btntext +<span class="string">'&lt;/li&gt;'</span>);</span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">var</span> destPage = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">switch</span> (btntype) &#123;</span><br><span class="line"> 			<span class="keyword">case</span> <span class="string">'first'</span>:</span><br><span class="line"> 				destPage = <span class="number">1</span>;</span><br><span class="line"> 				<span class="keyword">break</span>;</span><br><span class="line"> 			<span class="keyword">case</span> <span class="string">'prev'</span>:</span><br><span class="line"> 				destPage = pagecurrent - <span class="number">1</span>;</span><br><span class="line"> 				<span class="keyword">break</span>;</span><br><span class="line"> 			<span class="keyword">case</span> <span class="string">'next'</span>:</span><br><span class="line"> 				destPage = pagecurrent + <span class="number">1</span>;</span><br><span class="line"> 				<span class="keyword">break</span>;</span><br><span class="line"> 			<span class="keyword">case</span> <span class="string">'last'</span>:</span><br><span class="line"> 				destPage = pagecount;</span><br><span class="line"> 		&#125;</span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">if</span> (btntype == <span class="string">'first'</span> || btntype == <span class="string">'prev'</span>) &#123;</span><br><span class="line"> 			<span class="keyword">if</span> (pagecurrent &lt;= <span class="number">1</span>) &#123;</span><br><span class="line"> 				button.addClass(<span class="string">'disable'</span>);</span><br><span class="line"> 			&#125;</span><br><span class="line"> 			<span class="keyword">else</span> &#123;</span><br><span class="line"> 				button.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> 					btncallback(destPage);</span><br><span class="line"> 				&#125;);</span><br><span class="line"> 			&#125;</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		<span class="keyword">else</span> &#123;</span><br><span class="line"> 			<span class="keyword">if</span> (pagecurrent &gt;= pagecount) &#123;</span><br><span class="line"> 				button.addClass(<span class="string">'disable'</span>);</span><br><span class="line"> 			&#125;</span><br><span class="line"> 			<span class="keyword">else</span> &#123;</span><br><span class="line"> 				button.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> 					btncallback(destPage);</span><br><span class="line"> 				&#125;);</span><br><span class="line"> 			&#125;</span><br><span class="line"> 		&#125;</span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">return</span> button;</span><br><span class="line"> 	&#125;</span><br><span class="line"></span><br><span class="line"> &#125;)(jQuery);</span><br></pre></td></tr></table></figure>
+<p>调用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//Google的需要翻一下墙，你懂的--</span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"jquery.pager.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">'#pager'</span>).pager(&#123;</span><br><span class="line">            pagecurrent:<span class="number">1</span>,</span><br><span class="line">            pagecount:<span class="number">20</span>,</span><br><span class="line">            btncallback:pageClickCallback ,</span><br><span class="line">            <span class="comment">//first_text: 'first'</span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">    pageClickCallback = <span class="function"><span class="keyword">function</span>(<span class="params">pageclickednumber</span>)</span>&#123;</span><br><span class="line">        $(<span class="string">'#pager'</span>).pager(&#123;</span><br><span class="line">            pagecurrent:pageclickednumber,</span><br><span class="line">            pagecount:<span class="number">20</span>,</span><br><span class="line">            btncallback:PageClick,</span><br><span class="line">            <span class="comment">//first_text: 'first'</span></span><br><span class="line">        &#125;);</span><br><span class="line">        $(<span class="string">'.page-text'</span>).html(<span class="string">'当前是第&lt;strong&gt;'</span>+pageclickednumber+<span class="string">'&lt;/strong&gt;页'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果请查看 <a href="http://quanxi613.github.io/demo/pager/pager.html">demo</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://quanxi613.github.io/2015/05/25/jquery-plugin-0/" data-id="ciac7pbzz0006p1xrl8e1lgl9" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://quanxi613.github.io/2015/05/25/jquery-plugin-0/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/27/hexo-blog-set/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          hexo搭建github静态博客
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/05/25/jquery-plugin-0/" data-title="写一个jquery插件" data-url="http://quanxi613.github.io/2015/05/25/jquery-plugin-0/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客搭建/">博客搭建</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/05/31/svg-learning/">SVG初探</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/27/hexo-blog-set/">hexo搭建github静态博客</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/25/jquery-plugin-0/">写一个jquery插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://qiudeqing.com/" target="_blank">qiu的博客</a>
+          </li>
+        
+          <li>
+            <a href="http://lingyu.wang/" target="_blank">天镶的博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 quanxi613<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"quanxi613"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+</body>
+</html>
