@@ -42,7 +42,7 @@ S">
 <meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg9.png">
 <meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg10.png">
 <meta property="og:image" content="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg11.png">
-<meta property="og:updated_time" content="2015-05-31T08:37:57.000Z">
+<meta property="og:updated_time" content="2015-06-01T12:21:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVG初探">
 <meta name="twitter:description" content="最近看到一篇很有趣的关于动画的文章，想拿来做个练习，里面用到了SVG，所以花了一些时间了解了一下SVG，在这里做一个记录，方便自查
@@ -250,7 +250,7 @@ var _hmt = _hmt || [];
 <p>效果：</p>
 <p><img src="http://7xjckw.com1.z0.glb.clouddn.com/quanxi613svg4.png" alt=""></p>
 <p>从图中看到rect被放大到150*75，怎么计算的呢？</p>
-<p>viewBox现在是40<em>40，宽高比为1，而viewport是400</em>200宽高比为2，二者现在不相等，viewport与viewBox的宽度比为：<code>wr=400/40=10/1</code>，高度比为：<code>hr=200/40=5/1</code>，由于指定的是meet，那么就要达到viewport包含viewBox的效果，同时保持viewBox的宽高比，这时viewBox该怎么同时满足这两个条件呢？</p>
+<p>viewBox现在是40*40，宽高比为1，而viewport是400*200宽高比为2，二者现在不相等，viewport与viewBox的宽度比为：<code>wr=400/40=10/1</code>，高度比为：<code>hr=200/40=5/1</code>，由于指定的是meet，那么就要达到viewport包含viewBox的效果，同时保持viewBox的宽高比，这时viewBox该怎么同时满足这两个条件呢？</p>
 <p>viewBox还是很聪明的，它会按<code>wr</code>和<code>hr</code>中较小的那个值来进行宽高等比例缩放，这样就既能保持宽高比，还能被viewport包含啦~上例中得viewBox及里面的矩形rect的宽高就会都按5倍放大。</p>
 <ul>
 <li>slice 保持viewbox的宽高比，使viewBox包含viewport</li>
@@ -347,7 +347,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://quanxi613.github.io/2015/05/31/svg-learning/" data-id="ciac7t92g0003pmxrj76f9r9n" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://quanxi613.github.io/2015/05/31/svg-learning/" data-id="ciadvalvn0003bjxrdmnwwt97" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
