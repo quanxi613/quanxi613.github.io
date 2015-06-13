@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>FE-tool-template | quanxi613的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自己攒了个前端开发模板，目的是提高前端开发效率，前后端分离
+可改进地方还有很多，还请各位给些建议~~
+使用gulp作为自动化构建工具
+yeoman生成项目文件代码结构
+bower做包管理器
+handlebarsjs模板引擎
+添加php server环境，方便前端mock假数据
+准备工作安装nodejs
+windows系统下安装nodejs及环境配置
+
+下载nodejs，官网http://nodej">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FE-tool-template">
+<meta property="og:url" content="http://quanxi613.github.io/2015/06/13/fe-tool-template/index.html">
+<meta property="og:site_name" content="quanxi613的博客">
+<meta property="og:description" content="自己攒了个前端开发模板，目的是提高前端开发效率，前后端分离
+可改进地方还有很多，还请各位给些建议~~
+使用gulp作为自动化构建工具
+yeoman生成项目文件代码结构
+bower做包管理器
+handlebarsjs模板引擎
+添加php server环境，方便前端mock假数据
+准备工作安装nodejs
+windows系统下安装nodejs及环境配置
+
+下载nodejs，官网http://nodej">
+<meta property="og:image" content="https://github.com/quanxi613/FE-tool-template/raw/master/img/gulp-webapp.png">
+<meta property="og:image" content="https://github.com/quanxi613/FE-tool-template/raw/master/img/gulp-change.png">
+<meta property="og:image" content="https://github.com/quanxi613/FE-tool-template/raw/master/img/gulp-handlebars.png">
+<meta property="og:image" content="https://github.com/quanxi613/FE-tool-template/raw/master/img/gulp-index.png">
+<meta property="og:updated_time" content="2015-06-13T13:59:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FE-tool-template">
+<meta name="twitter:description" content="自己攒了个前端开发模板，目的是提高前端开发效率，前后端分离
+可改进地方还有很多，还请各位给些建议~~
+使用gulp作为自动化构建工具
+yeoman生成项目文件代码结构
+bower做包管理器
+handlebarsjs模板引擎
+添加php server环境，方便前端mock假数据
+准备工作安装nodejs
+windows系统下安装nodejs及环境配置
+
+下载nodejs，官网http://nodej">
+  
+    <link rel="alternative" href="/atom.xml" title="quanxi613的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f5426eb8e9063d338b5650a92e8690aa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End baidu Analytics -->
+
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">    
+    <div id="header-title" class="inner">     
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">quanxi613的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="http://quanxi613.github.io/demo">demo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/quanxi613" target="_blank" title="github"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="quanxi613.github.io">
+        </form>
+      </div>
+    </div>
+    <a href="#" class="avatar-wrap">
+      <img src="/img/avatar.jpg" class="avatar" alt="">
+    </a>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-fe-tool-template" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/13/fe-tool-template/" class="article-date">
+  <time datetime="2015-06-12T16:00:00.000Z" itemprop="datePublished">2015-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/架构搭建/">架构搭建</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      FE-tool-template
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>自己攒了个前端开发模板，目的是提高前端开发效率，前后端分离</p>
+<p>可改进地方还有很多，还请各位给些建议~~</p>
+<p>使用<code>gulp</code>作为自动化构建工具</p>
+<p><code>yeoman</code>生成项目文件代码结构</p>
+<p><code>bower</code>做包管理器</p>
+<p><code>handlebars</code>js模板引擎</p>
+<p>添加php server环境，方便前端mock假数据</p>
+<h2 id="准备工作">准备工作</h2><h3 id="安装nodejs">安装nodejs</h3><ol>
+<li><p>windows系统下安装nodejs及环境配置</p>
+<ul>
+<li><p>下载nodejs，官网<a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a>，选择适合你电脑配置的版本下载</p>
+</li>
+<li><p>下载完成后双击无脑安装，装好后在cmd控制台输入：<code>node -v</code>，控制台打印出版本号，则安装成功。</p>
+</li>
+<li><p>npm安装  新版nodejs已经集成npm，在cmd控制台输入<code>npm -v</code>，打印出版本号，则安装成功。</p>
+</li>
+<li><p>接下来便可以使用npm命令安装模块了</p>
+<p>   安装：<code>npm install &lt;module name&gt;</code></p>
+<p>   全局安装：<code>npm install -g &lt;Module Name&gt;</code></p>
+<p>   卸载模块：<code>npm uninstall &lt;Module Name&gt;</code></p>
+<p>   显示当前目录下安装的模块：<code>npm list</code></p>
+</li>
+</ul>
+</li>
+<li><p>mac系统下安装nodejs</p>
+<ul>
+<li><p>下载nodejs，官网<a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a>，选择mac版本下载</p>
+</li>
+<li><p>下载完成后，点击安装</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>顺便列两个常用命令行</p>
+<p><code>cd</code> 定位到目录</p>
+<p><code>ls</code> 列出文件列表 </p>
+<h3 id="安装gulp">安装gulp</h3><p><code>npm install -g gulp</code></p>
+<p>输入<code>gulp -v</code>，查看版本号确保正确安装</p>
+<h3 id="安装yeoman">安装yeoman</h3><p>yeoman：在web项目立项阶段用来生成项目的文件、代码结构，包括代码校验、测试和压缩等功能。</p>
+<p><code>npm install -g yo</code></p>
+<h3 id="安装bower">安装bower</h3><p>bower：web的包管理器</p>
+<p><code>npm install -g bower</code></p>
+<h2 id="正式开始">正式开始</h2><h3 id="将gulp安装到项目">将gulp安装到项目</h3><p><code>npm install --save-dev gulp</code></p>
+<p>这里使用<code>--save-dev</code>来更新package.json文件，更新devDependencies值，表明项目需要依赖gulp</p>
+<h3 id="用gulp-webapp生成项目目录">用gulp-webapp生成项目目录</h3><p>安装gulp-webapp</p>
+<p><code>npm install -g generator-gulp-webapp</code></p>
+<p>在项目目录下，输入命令行</p>
+<p><code>yo gulp-webapp 项目名</code></p>
+<p>安装时会提示是否安装sass，bootstrap和modernizr，除了sass，另外两个都选中安装。（项目主要用less，所以不安装sass）</p>
+<p>此时项目下已生成项目目录</p>
+<figure><br>    <img src="https://github.com/quanxi613/FE-tool-template/raw/master/img/gulp-webapp.png"><br></figure>
+
+<p>按照项目习惯，将app下的styles改为css，scripts改为js，images改为img，.tmp下的styles改为css。</p>
+<p>修改后的目录如下：</p>
+<figure><br>    <img src="https://github.com/quanxi613/FE-tool-template/raw/master/img/gulp-change.png"><br></figure>
+
+<p>此时别忘了修改<code>gulpfile.js</code>中的相应目录。最下面会给出最终的<code>gulpfile.js</code>文件内容。</p>
+<p>目录说明：</p>
+<ul>
+<li>.tmp：临时目录</li>
+<li>app：开发的源代码目录</li>
+<li>bower_components：通过bower下载下来的包</li>
+<li>dist：生成用于发布的项目</li>
+<li>node_modules：nodejs依赖包</li>
+<li>test：测试文件的目录</li>
+<li>.bowerrc：bower属性</li>
+<li>.editorconfig：对开发工具的属性配置</li>
+<li>.gitattributes：git属性的配置</li>
+<li>.gitignore：git管理文件的配置</li>
+<li>.jshintrc：JSHint配置</li>
+<li>bower.json：bower依赖管理</li>
+<li>gulpfile.js：gulp开发过程管理</li>
+<li>package.json：项目依赖文件</li>
+</ul>
+<p>app目录下的结构说明：</p>
+<ul>
+<li>css: 存放css文件</li>
+<li>font：存放字体资源</li>
+<li>img：存放图片资源</li>
+<li>js：存放js源文件</li>
+<li>templates（自己添加）：存放模板文件   后面会详细说明</li>
+<li>mock（自己添加）：存放模拟后台假数据的php  后面会详细说明</li>
+</ul>
+<h2 id="添加php环境">添加php环境</h2><p>在gulp中添加php开发环境，方便前端mock假数据</p>
+<p>使用gulp插件<a href="https://www.npmjs.com/package/gulp-connect-php" target="_blank">gulp-connect-php</a></p>
+<p>神器啊简直~~</p>
+<p>注意：使用这个插件需要php在5.4.0以上</p>
+<p>npm安装<code>gulp-connect-php</code></p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> gulp-connect-php</span><br></pre></td></tr></table></figure>
+<p>其实只添加上面的插件，再在gulpfile里配置好就已经有了php环境了，但会造成引用样式路径出错，导致加载不了css等文件</p>
+<p>为了解决这个问题，需要gulp插件<code>http-proxy</code>，安装</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> http-proxy</span><br></pre></td></tr></table></figure>
+<p>综合上述两点，在<code>gulpfile</code>中添加如下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> connect = <span class="built_in">require</span>(<span class="string">'gulp-connect-php'</span>);</span><br><span class="line"><span class="keyword">var</span> httpProxy = <span class="built_in">require</span>(<span class="string">'http-proxy'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'php-serve'</span>, [<span class="string">'styles'</span>, <span class="string">'fonts'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        port: <span class="number">9001</span>,   <span class="comment">//端口号可以自定义</span></span><br><span class="line">        base: <span class="string">'app/'</span>,</span><br><span class="line">        open: <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> proxy = httpProxy.createProxyServer(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">    browserSync(&#123;</span><br><span class="line">        notify: <span class="literal">false</span>,</span><br><span class="line">        port  : <span class="number">9000</span>,</span><br><span class="line">        server: &#123;</span><br><span class="line">            baseDir   : [<span class="string">'.tmp'</span>, <span class="string">'app'</span>],</span><br><span class="line">            routes    : &#123;</span><br><span class="line">                <span class="string">'/bower_components'</span>: <span class="string">'bower_components'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            middleware: <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;     <span class="comment">//给server添加一个middleware，可以观察在请求时是否需要代理</span></span><br><span class="line">                <span class="keyword">var</span> url = req.url;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (!url.match(<span class="regexp">/^\/(css|fonts|bower_components)\//</span>)) &#123;</span><br><span class="line">                    proxy.web(req, res, &#123; target: <span class="string">'http://127.0.0.1:9001'</span> &#125;);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    next();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// watch for changes</span></span><br><span class="line">    gulp.watch([</span><br><span class="line">        <span class="string">'app/*.html'</span>,</span><br><span class="line">        <span class="string">'app/mock/*.php'</span>,    <span class="comment">//mock是自己建的文件夹，放置.php文件</span></span><br><span class="line">        <span class="string">'app/js/**/*.js'</span>,</span><br><span class="line">        <span class="string">'app/img/**/*'</span>,</span><br><span class="line">        <span class="string">'.tmp/fonts/**/*'</span></span><br><span class="line">    ]).on(<span class="string">'change'</span>, reload);</span><br><span class="line"></span><br><span class="line">    gulp.watch(<span class="string">'app/css/**/*.css'</span>, [<span class="string">'styles'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'app/fonts/**/*'</span>, [<span class="string">'fonts'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'bower.json'</span>, [<span class="string">'wiredep'</span>, <span class="string">'fonts'</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>通过上面的折腾，运行<code>gulp php-serve</code>就可以开一个能运行php的server了~~</p>
+<p>接下来添加smarty模板</p>
+<p>从官网下载smarty，将文件夹拷贝至app下</p>
+<p>在app下新建文件夹<code>templates</code>、<code>templates_c</code>、<code>configs</code>，其中<code>templates</code>存放模板文件，<code>configs</code>存放smarty配置文件</p>
+<p>在<code>configs</code>里添加配置文件<code>smarty.config.php</code>，这样可以方便php引用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line">    <span class="comment">//Smarty PHP configuration</span></span><br><span class="line">     </span><br><span class="line">    define(<span class="string">'REAL_PATH'</span>, dirname(dirname(<span class="keyword">__FILE__</span>)));</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">require_once</span>(REAL_PATH.<span class="string">'/smarty/libs/Smarty.class.php'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$smarty</span>=<span class="keyword">new</span> Smarty();</span><br><span class="line"> </span><br><span class="line">    <span class="variable">$smarty</span>-&gt;setCacheDir(REAL_PATH.<span class="string">'\cache'</span>);</span><br><span class="line">    <span class="variable">$smarty</span>-&gt;setConfigDir(REAL_PATH.<span class="string">'\configs'</span>);</span><br><span class="line">    <span class="variable">$smarty</span>-&gt;setPluginsDir(REAL_PATH.<span class="string">'\plugins'</span>); </span><br><span class="line">    <span class="variable">$smarty</span>-&gt;setTemplateDir(REAL_PATH.<span class="string">'\templates'</span>);</span><br><span class="line">    <span class="variable">$smarty</span>-&gt;setCompileDir(REAL_PATH.<span class="string">'\templates_c'</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//添加Smarty自带的插件库</span></span><br><span class="line">    <span class="variable">$smarty</span>-&gt;addPluginsDir(REAL_PATH.<span class="string">'\smarty\plugins'</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//检测Smarty目录结构配置是否有效</span></span><br><span class="line">    <span class="comment">// $smarty-&gt;testInstall();</span></span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>在app下新建<code>mock</code>文件夹，里面主要存放模拟后台php假数据的<code>.php</code>文件</p>
+<p>比如新建一个<code>test.php</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="keyword">require</span>(<span class="string">'../configs/smarty.config.php'</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$smarty</span>-&gt;left_delimiter=<span class="string">"&lt;%"</span>;</span><br><span class="line"><span class="variable">$smarty</span>-&gt;right_delimiter=<span class="string">"%&gt;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$smarty</span>-&gt;assign(<span class="string">"num"</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$smarty</span>-&gt;display(<span class="string">'test.tpl'</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>那么在<code>test.tpl</code>中就可以通过<code>&lt;%num%&gt;</code>来获得从<code>test.php</code>传过去的数据</p>
+<p>浏览器中<code>localhost:端口号/mock/test.php</code>，即可出现<code>test.tpl</code>的页面效果，同时含有动态数据。</p>
+<h2 id="添加Handlebars作为JS模板引擎">添加Handlebars作为JS模板引擎</h2><h3 id="安装依赖">安装依赖</h3><p>安装gulp插件</p>
+<p><code>npm install --save-dev gulp-handlebars gulp-define-module gulp-declare</code></p>
+<p>gulp-handlebars能够把<code>.hbs</code>模板预编译为JavaScript</p>
+<p>gulp-define-module和gulp-declare结合使用，将编译好的JavaScript模板打包到一个命名空间模型中去。</p>
+<p>用bower安装Handlerbars</p>
+<p><code>bower install --save handlebars</code></p>
+<p>这样可以把Handlebars runtime添加到页面中，编译过得模板正依赖于此。</p>
+<h3 id="添加一个templatestask">添加一个<code>templates</code>task</h3><p>在gulpfile.js里添加</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">gulp</span><span class="class">.task</span>(<span class="string">'templates'</span>, function () &#123;</span><br><span class="line">  <span class="tag">return</span> <span class="tag">gulp</span><span class="class">.src</span>(<span class="string">'app/templates/**/*.hbs'</span>)</span><br><span class="line">    <span class="class">.pipe</span>($.<span class="function">handlebars</span>())</span><br><span class="line">    <span class="class">.pipe</span>($.<span class="function">defineModule</span>(<span class="string">'plain'</span>))</span><br><span class="line">    <span class="class">.pipe</span>($.<span class="function">declare</span>(&#123;</span><br><span class="line">      <span class="attribute">namespace</span>: <span class="string">'MyApp.templates'</span> <span class="comment">// change this to whatever you want</span></span><br><span class="line">    &#125;))</span><br><span class="line">    <span class="class">.pipe</span>(gulp.<span class="function">dest</span>(<span class="string">'.tmp/templates'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样就会将<code>.hbs</code>文件编译成<code>.js</code>文件，并存放到<code>.tmp</code>目录下</p>
+<h3 id="在html和serve里均添加templates依赖">在<code>html</code>和<code>serve</code>里均添加<code>templates</code>依赖</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'html'</span>, [<span class="string">'styles'</span>, <span class="string">'templates'</span>], <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'serve'</span>, [<span class="string">'styles'</span>, <span class="string">'templates'</span>, <span class="string">'fonts'</span>], <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h3 id="编辑servetask">编辑<code>serve</code>task</h3><p>在<code>serve</code>task里进行添加，使得<code>.hbs</code>文件的任何更改都会触发<code>templates</code>task，每当有一个<code>.js</code>文件在<code>.tmp/templates</code>生成，浏览器就会重新加载。</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> gulp.task('serve', ['styles', 'templates', 'fonts'], function () &#123;</span><br><span class="line">   ...</span><br><span class="line">   gulp.watch([</span><br><span class="line">     'app/*.html',</span><br><span class="line">     '.tmp/styles/**/*.css',</span><br><span class="line"><span class="addition">+    '.tmp/templates/**/*.js',</span></span><br><span class="line">     'app/scripts/**/*.js',</span><br><span class="line">     'app/images/**/*'</span><br><span class="line">   ]).on('change', reload);</span><br><span class="line"></span><br><span class="line">   gulp.watch('app/styles/**/*.scss', ['styles', reload]);</span><br><span class="line"><span class="addition">+  gulp.watch('app/templates/**/*.hbs', ['templates', reload]);</span></span><br><span class="line">   gulp.watch('bower.json', ['wiredep', 'fonts', reload]);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>同样的，在task<code>php-serve</code>里也加上</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> gulp.task('php-serve', ['styles', 'templates', 'fonts'], function () &#123;</span><br><span class="line">   ...</span><br><span class="line">   gulp.watch([</span><br><span class="line">     'app/*.html',</span><br><span class="line">     'app/mock/*.php',</span><br><span class="line">     '.tmp/styles/**/*.css',</span><br><span class="line"><span class="addition">+    '.tmp/templates/**/*.js',</span></span><br><span class="line">     'app/scripts/**/*.js',</span><br><span class="line">     'app/images/**/*'</span><br><span class="line">   ]).on('change', reload);</span><br><span class="line"></span><br><span class="line">   gulp.watch('app/styles/**/*.scss', ['styles', reload]);</span><br><span class="line"><span class="addition">+  gulp.watch('app/templates/**/*.hbs', ['templates', reload]);</span></span><br><span class="line">   gulp.watch('bower.json', ['wiredep', 'fonts', reload]);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="使用Handlebars">使用Handlebars</h3><p>在<code>app/templates</code>里写handlebars文件（<code>.hbs</code>文件），并在需要用到的HTML里像引用<code>.js</code>文件一样引用。</p>
+<p>例子</p>
+<p>在<code>app/templates</code>里写一个<code>foo.hbs</code>文件，内容如下</p>
+<p><code>&lt;p&gt;hello handlebars!&lt;/p&gt;</code></p>
+<p>然后在需要引用该模板的页面加上：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"bower_components/handlebars/handlebars.runtime.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"templates/foo.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通过下列语句渲染模板</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var tpl = MyApp.templates.foo<span class="comment">()</span>; <span class="comment">//MyApp.templates作为命名空间，可以在templates task里更改成任意名称</span></span><br><span class="line">$<span class="comment">('#id')</span>.html<span class="comment">(tpl)</span>;  <span class="comment">//添加到你需要添加的地方</span></span><br></pre></td></tr></table></figure>
+<p>我的效果：</p>
+<figure><br>    <img src="https://github.com/quanxi613/FE-tool-template/raw/master/img/gulp-handlebars.png"><br></figure>
+
+<p>handlebars模板已被引用进来</p>
+<h2 id="最终的gulpfile-js文件">最终的<code>gulpfile.js</code>文件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*global -$ */</span></span><br><span class="line"><span class="pi">'use strict'</span>;</span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'gulp-load-plugins'</span>)();</span><br><span class="line"><span class="keyword">var</span> browserSync = <span class="built_in">require</span>(<span class="string">'browser-sync'</span>);</span><br><span class="line"><span class="keyword">var</span> reload = browserSync.reload;</span><br><span class="line"><span class="keyword">var</span> connect = <span class="built_in">require</span>(<span class="string">'gulp-connect-php'</span>);</span><br><span class="line"><span class="keyword">var</span> httpProxy = <span class="built_in">require</span>(<span class="string">'http-proxy'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/css/main.css'</span>)</span><br><span class="line">    .pipe($.sourcemaps.init())</span><br><span class="line">    .pipe($.postcss([</span><br><span class="line">      <span class="built_in">require</span>(<span class="string">'autoprefixer-core'</span>)(&#123;browsers: [<span class="string">'last 1 version'</span>]&#125;)</span><br><span class="line">    ]))</span><br><span class="line">    .pipe($.sourcemaps.write())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'.tmp/css'</span>))</span><br><span class="line">    .pipe(reload(&#123;stream: <span class="literal">true</span>&#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'jshint'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/js/**/*.js'</span>)</span><br><span class="line">    .pipe(reload(&#123;stream: <span class="literal">true</span>, once: <span class="literal">true</span>&#125;))</span><br><span class="line">    .pipe($.jshint())</span><br><span class="line">    .pipe($.jshint.reporter(<span class="string">'jshint-stylish'</span>))</span><br><span class="line">    .pipe($.<span class="keyword">if</span>(!browserSync.active, $.jshint.reporter(<span class="string">'fail'</span>)));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'html'</span>, [<span class="string">'styles'</span>, <span class="string">'templates'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> assets = $.useref.assets(&#123;searchPath: [<span class="string">'.tmp'</span>, <span class="string">'app'</span>, <span class="string">'.'</span>]&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/*.html'</span>)</span><br><span class="line">    .pipe(assets)</span><br><span class="line">    .pipe($.<span class="keyword">if</span>(<span class="string">'*.js'</span>, $.uglify()))</span><br><span class="line">    .pipe($.<span class="keyword">if</span>(<span class="string">'*.css'</span>, $.csso()))</span><br><span class="line">    .pipe(assets.restore())</span><br><span class="line">    .pipe($.useref())</span><br><span class="line">    .pipe($.<span class="keyword">if</span>(<span class="string">'*.html'</span>, $.minifyHtml(&#123;conditionals: <span class="literal">true</span>, loose: <span class="literal">true</span>&#125;)))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/img/**/*'</span>)</span><br><span class="line">    .pipe($.cache($.imagemin(&#123;</span><br><span class="line">      progressive: <span class="literal">true</span>,</span><br><span class="line">      interlaced: <span class="literal">true</span>,</span><br><span class="line">      <span class="comment">// don't remove IDs from SVGs, they are often used</span></span><br><span class="line">      <span class="comment">// as hooks for embedding and styling</span></span><br><span class="line">      svgoPlugins: [&#123;cleanupIDs: <span class="literal">false</span>&#125;]</span><br><span class="line">    &#125;)))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/img'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'fonts'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="built_in">require</span>(<span class="string">'main-bower-files'</span>)(&#123;</span><br><span class="line">    filter: <span class="string">'**/*.&#123;eot,svg,ttf,woff,woff2&#125;'</span></span><br><span class="line">  &#125;).concat(<span class="string">'app/fonts/**/*'</span>))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'.tmp/fonts'</span>))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/fonts'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'extras'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src([</span><br><span class="line">    <span class="string">'app/*.*'</span>,</span><br><span class="line">    <span class="string">'!app/*.html'</span></span><br><span class="line">  ], &#123;</span><br><span class="line">    dot: <span class="literal">true</span></span><br><span class="line">  &#125;).pipe(gulp.dest(<span class="string">'dist'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'templates'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/templates/**/*.hbs'</span>)</span><br><span class="line">    .pipe($.handlebars())</span><br><span class="line">    .pipe($.defineModule(<span class="string">'plain'</span>))</span><br><span class="line">    .pipe($.declare(&#123;</span><br><span class="line">      namespace: <span class="string">'MyApp.templates'</span> <span class="comment">// change this to whatever you want</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'.tmp/templates'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'clean'</span>, <span class="built_in">require</span>(<span class="string">'del'</span>).bind(<span class="literal">null</span>, [<span class="string">'.tmp'</span>, <span class="string">'dist'</span>]));</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'serve'</span>, [<span class="string">'styles'</span>, <span class="string">'templates'</span>, <span class="string">'fonts'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  browserSync(&#123;</span><br><span class="line">    notify: <span class="literal">false</span>,</span><br><span class="line">    port: <span class="number">9000</span>,</span><br><span class="line">    server: &#123;</span><br><span class="line">      baseDir: [<span class="string">'.tmp'</span>, <span class="string">'app'</span>],</span><br><span class="line">      routes: &#123;</span><br><span class="line">        <span class="string">'/bower_components'</span>: <span class="string">'bower_components'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// watch for changes</span></span><br><span class="line">  gulp.watch([</span><br><span class="line">    <span class="string">'app/*.html'</span>,</span><br><span class="line">    <span class="string">'.tmp/css/**/*.css'</span>,</span><br><span class="line">    <span class="string">'.tmp/templates/**/*.js'</span>,</span><br><span class="line">    <span class="string">'app/js/**/*.js'</span>,</span><br><span class="line">    <span class="string">'app/img/**/*'</span>,</span><br><span class="line">    <span class="string">'.tmp/fonts/**/*'</span></span><br><span class="line">  ]).on(<span class="string">'change'</span>, reload);</span><br><span class="line"></span><br><span class="line">  gulp.watch(<span class="string">'app/css/**/*.css'</span>, [<span class="string">'styles'</span>]);</span><br><span class="line">  gulp.watch(<span class="string">'app/templates/**/*.hbs'</span>, [<span class="string">'templates'</span>, reload]);</span><br><span class="line">  gulp.watch(<span class="string">'app/fonts/**/*'</span>, [<span class="string">'fonts'</span>]);</span><br><span class="line">  gulp.watch(<span class="string">'bower.json'</span>, [<span class="string">'wiredep'</span>, <span class="string">'fonts'</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'php-serve'</span>, [<span class="string">'styles'</span>, <span class="string">'fonts'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        port: <span class="number">9001</span>,</span><br><span class="line">        base: <span class="string">'app/'</span>,</span><br><span class="line">        open: <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> proxy = httpProxy.createProxyServer(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">    browserSync(&#123;</span><br><span class="line">        notify: <span class="literal">false</span>,</span><br><span class="line">        port  : <span class="number">9000</span>,</span><br><span class="line">        server: &#123;</span><br><span class="line">            baseDir   : [<span class="string">'.tmp'</span>, <span class="string">'app'</span>],</span><br><span class="line">            routes    : &#123;</span><br><span class="line">                <span class="string">'/bower_components'</span>: <span class="string">'bower_components'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            middleware: <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> url = req.url;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (!url.match(<span class="regexp">/^\/(css|fonts|bower_components)\//</span>)) &#123;</span><br><span class="line">                    proxy.web(req, res, &#123; target: <span class="string">'http://127.0.0.1:9001'</span> &#125;);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    next();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// watch for changes</span></span><br><span class="line">    gulp.watch([</span><br><span class="line">        <span class="string">'app/*.html'</span>,</span><br><span class="line">        <span class="string">'app/mock/*.php'</span>,</span><br><span class="line">        <span class="string">'.tmp/css/**/*.css'</span>,</span><br><span class="line">	<span class="string">'.tmp/templates/**/*.js'</span>,</span><br><span class="line">        <span class="string">'app/js/**/*.js'</span>,</span><br><span class="line">        <span class="string">'app/img/**/*'</span>,</span><br><span class="line">        <span class="string">'.tmp/fonts/**/*'</span></span><br><span class="line">    ]).on(<span class="string">'change'</span>, reload);</span><br><span class="line"></span><br><span class="line">    gulp.watch(<span class="string">'app/css/**/*.css'</span>, [<span class="string">'styles'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'app/templates/**/*.hbs'</span>, [<span class="string">'templates'</span>, reload]);</span><br><span class="line">    gulp.watch(<span class="string">'app/fonts/**/*'</span>, [<span class="string">'fonts'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'bower.json'</span>, [<span class="string">'wiredep'</span>, <span class="string">'fonts'</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// inject bower components</span></span><br><span class="line">gulp.task(<span class="string">'wiredep'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> wiredep = <span class="built_in">require</span>(<span class="string">'wiredep'</span>).stream;</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'app/*.html'</span>)</span><br><span class="line">    .pipe(wiredep(&#123;</span><br><span class="line">      ignorePath: <span class="regexp">/^(\.\.\/)*\.\./</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'app'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'build'</span>, [<span class="string">'jshint'</span>, <span class="string">'html'</span>, <span class="string">'images'</span>, <span class="string">'fonts'</span>, <span class="string">'extras'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'dist/**/*'</span>).pipe($.size(&#123;title: <span class="string">'build'</span>, gzip: <span class="literal">true</span>&#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'clean'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.start(<span class="string">'build'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="运行">运行</h2><h3 id="输入命令行">输入命令行</h3><p><code>gulp serve</code></p>
+<p>浏览器会自动打开app下的index.html，localhost：9000</p>
+<figure><br>    <img src="https://github.com/quanxi613/FE-tool-template/raw/master/img/gulp-index.png"><br></figure>
+
+<p>任何文件的改动都会自动刷新浏览器</p>
+<h3 id="输入命令行-1">输入命令行</h3><p><code>gulp php-serve</code></p>
+<p>浏览器会自动打开app下的index.php，localhost：8090 (可在gulpfile.js修改端口号)</p>
+<p>同样的，任何文件的改动都会自动刷新浏览器</p>
+<h2 id="编译文件">编译文件</h2><p><code>gulp build</code></p>
+<p>gulp将build后的文件放入dist目录下</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://quanxi613.github.io/2015/06/13/fe-tool-template/" data-id="ciav3xw6b0000ekxr7lewu33u" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://quanxi613.github.io/2015/06/13/fe-tool-template/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/06/06/js-animation/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">JS动画基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/06/13/fe-tool-template/" data-title="FE-tool-template" data-url="http://quanxi613.github.io/2015/06/13/fe-tool-template/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS动画/">JS动画</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客搭建/">博客搭建</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/架构搭建/">架构搭建</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/06/13/fe-tool-template/">FE-tool-template</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/06/js-animation/">JS动画基础</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/31/svg-learning/">SVG初探</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/27/hexo-blog-set/">hexo搭建github静态博客</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/25/jquery-plugin-0/">写一个jquery插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://qiudeqing.com/" target="_blank">qiu的博客</a>
+          </li>
+        
+          <li>
+            <a href="http://lingyu.wang/" target="_blank">天镶的博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 quanxi613<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="http://quanxi613.github.io/demo" class="mobile-nav-link">demo</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"quanxi613"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+</body>
+</html>
