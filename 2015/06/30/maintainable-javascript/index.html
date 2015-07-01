@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>重构你的JS代码 | quanxi613的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近写JS的时候总是发现写出来的东西结构不够清晰，就想着提高一下对JS的重构能力，看了一些这方面的资料，总结了一些我认为比较重要的方法，后续发现有更多的实用方案会陆续加进来
+UI层的松耦合这里不必多说，就是HTML、CSS、JS需要做分层
+
+CSS中不能出现JS，也即不要使用CSS表达式
+从JS中抽离CSS
+
+除了要对元素做定位，可以在JS中使用style.top、style.left、style">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重构你的JS代码">
+<meta property="og:url" content="http://quanxi613.github.io/2015/06/30/maintainable-javascript/index.html">
+<meta property="og:site_name" content="quanxi613的博客">
+<meta property="og:description" content="最近写JS的时候总是发现写出来的东西结构不够清晰，就想着提高一下对JS的重构能力，看了一些这方面的资料，总结了一些我认为比较重要的方法，后续发现有更多的实用方案会陆续加进来
+UI层的松耦合这里不必多说，就是HTML、CSS、JS需要做分层
+
+CSS中不能出现JS，也即不要使用CSS表达式
+从JS中抽离CSS
+
+除了要对元素做定位，可以在JS中使用style.top、style.left、style">
+<meta property="og:updated_time" content="2015-07-01T12:51:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重构你的JS代码">
+<meta name="twitter:description" content="最近写JS的时候总是发现写出来的东西结构不够清晰，就想着提高一下对JS的重构能力，看了一些这方面的资料，总结了一些我认为比较重要的方法，后续发现有更多的实用方案会陆续加进来
+UI层的松耦合这里不必多说，就是HTML、CSS、JS需要做分层
+
+CSS中不能出现JS，也即不要使用CSS表达式
+从JS中抽离CSS
+
+除了要对元素做定位，可以在JS中使用style.top、style.left、style">
+  
+    <link rel="alternative" href="/atom.xml" title="quanxi613的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f5426eb8e9063d338b5650a92e8690aa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End baidu Analytics -->
+
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">    
+    <div id="header-title" class="inner">     
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">quanxi613的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="http://quanxi613.github.io/demo">demo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/quanxi613" target="_blank" title="github"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="quanxi613.github.io">
+        </form>
+      </div>
+    </div>
+    <a href="#" class="avatar-wrap">
+      <img src="/img/avatar.jpg" class="avatar" alt="">
+    </a>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-maintainable-javascript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/30/maintainable-javascript/" class="article-date">
+  <time datetime="2015-06-29T16:00:00.000Z" itemprop="datePublished">2015-06-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JS/">JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      重构你的JS代码
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近写JS的时候总是发现写出来的东西结构不够清晰，就想着提高一下对JS的重构能力，看了一些这方面的资料，总结了一些我认为比较重要的方法，后续发现有更多的实用方案会陆续加进来</p>
+<h2 id="UI层的松耦合">UI层的松耦合</h2><p>这里不必多说，就是HTML、CSS、JS需要做分层</p>
+<ul>
+<li>CSS中不能出现JS，也即不要使用CSS表达式</li>
+<li>从JS中抽离CSS</li>
+</ul>
+<p>除了要对元素做定位，可以在JS中使用<code>style.top</code>、<code>style.left</code>、<code>style.right</code>和<code>style.bottom</code>来对元素做定位</p>
+<p>在其他情况下修改元素样式，最好是用JS操作CSS的className，比如：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//bad</span></span><br><span class="line">element.style.<span class="built_in">color</span> = <span class="string">"red"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//good</span></span><br><span class="line">.reveal &#123;</span><br><span class="line">	<span class="built_in">color</span>:<span class="built_in">red</span>;</span><br><span class="line">	left:<span class="number">10</span>px;</span><br><span class="line">	top:<span class="number">100</span>px;</span><br><span class="line">	visibility:visible;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">element.className += <span class="string">"reveal"</span>;</span><br></pre></td></tr></table></figure>
+<p>这样在页面的生存周期中，JS可以随意添加和删除元素的className，由于className的样式都定义在CSS里，所以需要修改样式可以直接在CSS里修改，而不必修改JS，这样就实现了JS和CSS的松耦合。</p>
+<ul>
+<li>HTML中不要嵌入JS</li>
+</ul>
+<p>经典的bad写法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">onclick</span>=<span class="value">"doSomething()"</span> <span class="attribute">id</span>=<span class="value">"btn"</span>&gt;</span>click<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当然这个是在很久之前大量流行的写法，现在基本大家都不会这么写了，都会在一个单独的JS文件里做绑定事件等工作了</p>
+<ul>
+<li>JS中不要出现大量的HTML</li>
+</ul>
+<p>这种情况经常发生在给innerHTML赋值，比如</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementById(<span class="comment">'div');</span></span><br><span class="line">div.innerHTML = <span class="comment">'<span class="xmlDocTag">&lt;h3&gt;</span>error<span class="xmlDocTag">&lt;/h3&gt;</span><span class="xmlDocTag">&lt;p&gt;</span>invalid e-mail address<span class="xmlDocTag">&lt;/p&gt;</span>'</span></span><br></pre></td></tr></table></figure>
+<p>这样会造成调试的复杂性，不容易追踪bug，因此需要将HTML从JS中抽离</p>
+<p>推荐使用类似<a href="http://handlebarsjs.com/" target="_blank" rel="external">handlebars</a>的JS模板引擎</p>
+<h2 id="避免使用全局变量">避免使用全局变量</h2><p>过多的全局变量可能会造成命名冲突，造成代码脆弱不易维护。同时，全局环境是用来定义JS内置对象的地方，若在这个作用域中添加了自己定义的变量，可能会由读取浏览器自带的内置变量的风险</p>
+<p>要解决上述问题推荐使用模块化编程</p>
+<p>AMD异步模块定义，通过制定模块名称、依赖和一个工厂方法，依赖加载完成后执行这个工厂方法。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">'module-name'</span>, [<span class="string">'dependency1'</span>, <span class="string">'dependency2'</span>], <span class="function"><span class="keyword">function</span><span class="params">(dependency1, dependency2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//模块内容</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>使用模块加载器来使用AMD模块，常用的<a href="http://www.requirejs.org/" target="_blank" rel="external">requirejs</a>，它使用全局函数<code>require()</code>来加载指定的依赖并执行回调函数，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">'module-name'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    name.doSomething(); <span class="comment">//执行模块中的方法</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="事件处理">事件处理</h2><p>很多事件处理的相关代码和事件的环境紧紧耦合，导致维护性极差</p>
+<p>对于事件处理的优化主要有两个规则：1、隔离应用逻辑 2、不要分发事件对象</p>
+<p>通过一个例子的改进来说明上述两点</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//bad</span></span><br><span class="line">.reveal &#123;</span><br><span class="line">    color:red;</span><br><span class="line">    left:<span class="number">10</span>px;</span><br><span class="line">    top:<span class="number">100</span>px;</span><br><span class="line">    visibility:visible;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">handleClick</span>(<span class="params"><span class="keyword">event</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> popup = document.getElementById(<span class="string">'popup'</span>);</span><br><span class="line">    popup.style.left = <span class="keyword">event</span>.clientX + <span class="string">'px'</span>;</span><br><span class="line">    popup.style.top = <span class="keyword">event</span>.clientY + <span class="string">'px'</span>;</span><br><span class="line">    popup.className = <span class="string">'reveal'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">addListener(element, <span class="string">'click'</span>, handleClick);</span><br></pre></td></tr></table></figure>
+<p>上面代码是有问题的</p>
+<p>首先，事件处理程序包含了应用逻辑，也就是包含了跟应用相关的功能性代码，而不是和用户行为相关的。</p>
+<p>上面的代码是要在点击时在一个特定位置显示一个弹出框，这个弹出框的class是reveal，看似没有问题，但实际上如果在其他地方也会触发同样的逻辑时（比如按下键盘上某个键也会触发同样逻辑），就会造成多个事件处理执行了同样的逻辑，代码就需要被复制很多次；除此之外，测试时需要直接触发功能代码，而不需要通过模拟对元素的点击来触发。</p>
+<p>因此将应用逻辑从所有事件处理中抽离是一种最佳实践，对上面的代码做重构：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//good</span></span><br><span class="line"><span class="keyword">var</span> MyApplication = &#123;</span><br><span class="line">    handleClick: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.showPopup(event);</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    showPopup: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> popup = <span class="built_in">document</span>.getElementById(<span class="string">'popup'</span>);</span><br><span class="line">        popup.style.left = event.clientX + <span class="string">'px'</span>;</span><br><span class="line">        popup.style.top = event.clientY + <span class="string">'px'</span>;</span><br><span class="line">        popup.className = <span class="string">'reveal'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">addListener(element, <span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    MyApplication.handleClick(event);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样一来，处理应用逻辑的程序转移到了<code>MyApplication.showPopup()</code>中，<code>MyApplication.handleClick()</code>只做一件事，就是调用<code>MyApplication.showPopup()</code>方法。这时对.showPopup()的调用就不需要依赖于click事件了。这一步骤就是优化事件处理的第一步，隔离应用逻辑。</p>
+<p>做好上面的工作以后，还有一个问题就是event对象被无节制分发，从匿名事件处理函数传到了<code>MyApplication.handleClick()</code>，又传到了<code>MyApplication.showPopup()</code>中，由于event对象包含很多与事件相关的额外信息，而这里的代码只用到了其中的两个<code>clientX</code>和<code>clientY</code>，解决这个问题的最好办法就是让事件处理程序使用event对象，然后得到所有需要的数据后传给应用逻辑。</p>
+<p>继续重构：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//better</span></span><br><span class="line"><span class="keyword">var</span> MyApplication = &#123;</span><br><span class="line">    handleClick: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.showPopup(event.clientX, event.clientY);</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    showPopup: <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> popup = <span class="built_in">document</span>.getElementById(<span class="string">'popup'</span>);</span><br><span class="line">        popup.style.left = x + <span class="string">'px'</span>;</span><br><span class="line">        popup.style.top = y + <span class="string">'px'</span>;</span><br><span class="line">        popup.className = <span class="string">'reveal'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">addListener(element, <span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    MyApplication.handleClick(event);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样一来，对于<code>MyApplication.showPopup()</code>传入的参数就变得非常清晰，且可以随意测试或者在代码的任何位置调用这段逻辑。</p>
+<p>当处理事件时，最好让事件处理程序成为唯一接触到event对象的函数，也就是说在事件处理程序中完成所有对event对象的必要操作，不要让应用逻辑对event产生依赖。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://quanxi613.github.io/2015/06/30/maintainable-javascript/" data-id="cibkts2q40006f5xr5b89gowe" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://quanxi613.github.io/2015/06/30/maintainable-javascript/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/06/13/fe-tool-template/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">FE-tool-template</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/06/30/maintainable-javascript/" data-title="重构你的JS代码" data-url="http://quanxi613.github.io/2015/06/30/maintainable-javascript/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS动画/">JS动画</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客搭建/">博客搭建</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/架构搭建/">架构搭建</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/06/30/maintainable-javascript/">重构你的JS代码</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/13/fe-tool-template/">FE-tool-template</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/06/js-animation/">JS动画基础</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/31/svg-learning/">SVG初探</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/27/hexo-blog-set/">hexo搭建github静态博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://qiudeqing.com/" target="_blank">qiu的博客</a>
+          </li>
+        
+          <li>
+            <a href="http://lingyu.wang/" target="_blank">天镶的博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 quanxi613<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="http://quanxi613.github.io/demo" class="mobile-nav-link">demo</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"quanxi613"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+</body>
+</html>
