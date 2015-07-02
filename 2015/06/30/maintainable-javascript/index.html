@@ -7,33 +7,42 @@
   <title>重构你的JS代码 | quanxi613的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="最近写JS的时候总是发现写出来的东西结构不够清晰，就想着提高一下对JS的重构能力，看了一些这方面的资料，总结了一些我认为比较重要的方法，后续发现有更多的实用方案会陆续加进来
-UI层的松耦合这里不必多说，就是HTML、CSS、JS需要做分层
+
+UI层的松耦合
+
+这里不必多说，就是HTML、CSS、JS需要做分层
 
 CSS中不能出现JS，也即不要使用CSS表达式
 从JS中抽离CSS
 
-除了要对元素做定位，可以在JS中使用style.top、style.left、style">
+除了要对元素做定位，可以在JS中使用style.top、style.left、st">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重构你的JS代码">
 <meta property="og:url" content="http://quanxi613.github.io/2015/06/30/maintainable-javascript/index.html">
 <meta property="og:site_name" content="quanxi613的博客">
 <meta property="og:description" content="最近写JS的时候总是发现写出来的东西结构不够清晰，就想着提高一下对JS的重构能力，看了一些这方面的资料，总结了一些我认为比较重要的方法，后续发现有更多的实用方案会陆续加进来
-UI层的松耦合这里不必多说，就是HTML、CSS、JS需要做分层
+
+UI层的松耦合
+
+这里不必多说，就是HTML、CSS、JS需要做分层
 
 CSS中不能出现JS，也即不要使用CSS表达式
 从JS中抽离CSS
 
-除了要对元素做定位，可以在JS中使用style.top、style.left、style">
-<meta property="og:updated_time" content="2015-07-01T12:51:50.000Z">
+除了要对元素做定位，可以在JS中使用style.top、style.left、st">
+<meta property="og:updated_time" content="2015-07-02T01:58:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重构你的JS代码">
 <meta name="twitter:description" content="最近写JS的时候总是发现写出来的东西结构不够清晰，就想着提高一下对JS的重构能力，看了一些这方面的资料，总结了一些我认为比较重要的方法，后续发现有更多的实用方案会陆续加进来
-UI层的松耦合这里不必多说，就是HTML、CSS、JS需要做分层
+
+UI层的松耦合
+
+这里不必多说，就是HTML、CSS、JS需要做分层
 
 CSS中不能出现JS，也即不要使用CSS表达式
 从JS中抽离CSS
 
-除了要对元素做定位，可以在JS中使用style.top、style.left、style">
+除了要对元素做定位，可以在JS中使用style.top、style.left、st">
   
     <link rel="alternative" href="/atom.xml" title="quanxi613的博客" type="application/atom+xml">
   
@@ -134,7 +143,10 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近写JS的时候总是发现写出来的东西结构不够清晰，就想着提高一下对JS的重构能力，看了一些这方面的资料，总结了一些我认为比较重要的方法，后续发现有更多的实用方案会陆续加进来</p>
-<h2 id="UI层的松耦合">UI层的松耦合</h2><p>这里不必多说，就是HTML、CSS、JS需要做分层</p>
+<blockquote>
+<p>UI层的松耦合</p>
+</blockquote>
+<p>这里不必多说，就是HTML、CSS、JS需要做分层</p>
 <ul>
 <li>CSS中不能出现JS，也即不要使用CSS表达式</li>
 <li>从JS中抽离CSS</li>
@@ -156,13 +168,19 @@ var _hmt = _hmt || [];
 <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementById(<span class="comment">'div');</span></span><br><span class="line">div.innerHTML = <span class="comment">'<span class="xmlDocTag">&lt;h3&gt;</span>error<span class="xmlDocTag">&lt;/h3&gt;</span><span class="xmlDocTag">&lt;p&gt;</span>invalid e-mail address<span class="xmlDocTag">&lt;/p&gt;</span>'</span></span><br></pre></td></tr></table></figure>
 <p>这样会造成调试的复杂性，不容易追踪bug，因此需要将HTML从JS中抽离</p>
 <p>推荐使用类似<a href="http://handlebarsjs.com/" target="_blank" rel="external">handlebars</a>的JS模板引擎</p>
-<h2 id="避免使用全局变量">避免使用全局变量</h2><p>过多的全局变量可能会造成命名冲突，造成代码脆弱不易维护。同时，全局环境是用来定义JS内置对象的地方，若在这个作用域中添加了自己定义的变量，可能会由读取浏览器自带的内置变量的风险</p>
+<blockquote>
+<p>避免使用全局变量</p>
+</blockquote>
+<p>过多的全局变量可能会造成命名冲突，造成代码脆弱不易维护。同时，全局环境是用来定义JS内置对象的地方，若在这个作用域中添加了自己定义的变量，可能会由读取浏览器自带的内置变量的风险</p>
 <p>要解决上述问题推荐使用模块化编程</p>
 <p>AMD异步模块定义，通过制定模块名称、依赖和一个工厂方法，依赖加载完成后执行这个工厂方法。</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">'module-name'</span>, [<span class="string">'dependency1'</span>, <span class="string">'dependency2'</span>], <span class="function"><span class="keyword">function</span><span class="params">(dependency1, dependency2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//模块内容</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>使用模块加载器来使用AMD模块，常用的<a href="http://www.requirejs.org/" target="_blank" rel="external">requirejs</a>，它使用全局函数<code>require()</code>来加载指定的依赖并执行回调函数，比如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">'module-name'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    name.doSomething(); <span class="comment">//执行模块中的方法</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="事件处理">事件处理</h2><p>很多事件处理的相关代码和事件的环境紧紧耦合，导致维护性极差</p>
+<blockquote>
+<p>事件处理</p>
+</blockquote>
+<p>很多事件处理的相关代码和事件的环境紧紧耦合，导致维护性极差</p>
 <p>对于事件处理的优化主要有两个规则：1、隔离应用逻辑 2、不要分发事件对象</p>
 <p>通过一个例子的改进来说明上述两点</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//bad</span></span><br><span class="line">.reveal &#123;</span><br><span class="line">    color:red;</span><br><span class="line">    left:<span class="number">10</span>px;</span><br><span class="line">    top:<span class="number">100</span>px;</span><br><span class="line">    visibility:visible;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">handleClick</span>(<span class="params"><span class="keyword">event</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> popup = document.getElementById(<span class="string">'popup'</span>);</span><br><span class="line">    popup.style.left = <span class="keyword">event</span>.clientX + <span class="string">'px'</span>;</span><br><span class="line">    popup.style.top = <span class="keyword">event</span>.clientY + <span class="string">'px'</span>;</span><br><span class="line">    popup.className = <span class="string">'reveal'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">addListener(element, <span class="string">'click'</span>, handleClick);</span><br></pre></td></tr></table></figure>
@@ -182,7 +200,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://quanxi613.github.io/2015/06/30/maintainable-javascript/" data-id="cibljhhbp0006cmxr84zu9thq" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://quanxi613.github.io/2015/06/30/maintainable-javascript/" data-id="cibljm8xq0006daxrxrhs0hrk" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
