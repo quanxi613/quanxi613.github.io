@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JS异步编程 | quanxi613的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在系统学习JS异步编程的知识，本篇文章会持续更新，每次都会有新增内容
+异步编程的主要设计模式就是PubSub模式，也即发布订阅模式，node的EventEmitter对象，Backbone的事件化模型和jQuery的自定义事件都是这种模式的表现。
+
+PubSub模式
+
+很典型的click事件
+1dom.onclick = clickHandler;
+上面的过程完成了两件事，一、注册了事件cli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS异步编程">
+<meta property="og:url" content="http://quanxi613.github.io/2015/07/05/async-js/index.html">
+<meta property="og:site_name" content="quanxi613的博客">
+<meta property="og:description" content="最近在系统学习JS异步编程的知识，本篇文章会持续更新，每次都会有新增内容
+异步编程的主要设计模式就是PubSub模式，也即发布订阅模式，node的EventEmitter对象，Backbone的事件化模型和jQuery的自定义事件都是这种模式的表现。
+
+PubSub模式
+
+很典型的click事件
+1dom.onclick = clickHandler;
+上面的过程完成了两件事，一、注册了事件cli">
+<meta property="og:updated_time" content="2015-07-05T14:24:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS异步编程">
+<meta name="twitter:description" content="最近在系统学习JS异步编程的知识，本篇文章会持续更新，每次都会有新增内容
+异步编程的主要设计模式就是PubSub模式，也即发布订阅模式，node的EventEmitter对象，Backbone的事件化模型和jQuery的自定义事件都是这种模式的表现。
+
+PubSub模式
+
+很典型的click事件
+1dom.onclick = clickHandler;
+上面的过程完成了两件事，一、注册了事件cli">
+  
+    <link rel="alternative" href="/atom.xml" title="quanxi613的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f5426eb8e9063d338b5650a92e8690aa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End baidu Analytics -->
+
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">    
+    <div id="header-title" class="inner">     
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">quanxi613的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="http://quanxi613.github.io/demo">demo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/quanxi613" target="_blank" title="github"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="quanxi613.github.io">
+        </form>
+      </div>
+    </div>
+    <a href="#" class="avatar-wrap">
+      <img src="/img/avatar.jpg" class="avatar" alt="">
+    </a>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-async-js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/05/async-js/" class="article-date">
+  <time datetime="2015-07-04T16:00:00.000Z" itemprop="datePublished">2015-07-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JS/">JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS异步编程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在系统学习JS异步编程的知识，本篇文章会持续更新，每次都会有新增内容</p>
+<p>异步编程的主要设计模式就是PubSub模式，也即发布订阅模式，node的<code>EventEmitter</code>对象，Backbone的事件化模型和jQuery的自定义事件都是这种模式的表现。</p>
+<blockquote>
+<p>PubSub模式</p>
+</blockquote>
+<p>很典型的click事件</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dom.onclick = clickHandler<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>上面的过程完成了两件事，一、注册了事件click，二、添加了事件处理器，也就是当这个事件触发时要执行的回调函数</p>
+<p>我们自己实现一个PubSub模式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PubSub</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.handlers = &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注册事件以及handler</span></span><br><span class="line">PubSub.prototype.on = <span class="function"><span class="keyword">function</span>(<span class="params">eventType,handler</span>) </span>&#123;</span><br><span class="line">	<span class="comment">/*如果注册的事件之前没有存在过，那么新添进去*/</span></span><br><span class="line">	<span class="keyword">if</span> (!(eventType <span class="keyword">in</span> <span class="keyword">this</span>.handlers)) &#123;</span><br><span class="line">		<span class="keyword">this</span>.handlers[eventType] = [];  </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">this</span>.handlers[eventType].push(handler); <span class="comment">//将事件处理器作为数组存储，那么就会按照添加处理器的顺序来调用</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//触发事件，遍历所有事件处理器</span></span><br><span class="line">PubSub.prototype.emit = <span class="function"><span class="keyword">function</span>(<span class="params">eventType</span>) </span>&#123;</span><br><span class="line">	<span class="comment">/*取到除了eventType之外的所有参数，并转换为数组*/</span></span><br><span class="line">	<span class="keyword">var</span> handlerArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, len=<span class="keyword">this</span>.handlers[eventType].length; i&lt;len; i++) &#123;</span><br><span class="line">		<span class="comment">//对这个eventType执行注册进去的handler</span></span><br><span class="line">		<span class="keyword">this</span>.handlers[eventType][i].apply(<span class="keyword">this</span>, handlerArgs);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//返回这个对象</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pubsub = <span class="keyword">new</span> PubSub();</span><br><span class="line">pubsub.on(<span class="string">'myEvent'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'success!'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">pubsub.emit(<span class="string">'myEvent'</span>);</span><br></pre></td></tr></table></figure>
+<p>运行代码，console里打印出来success，表明调用成功。</p>
+<p>是不是发现很简单啊？嘿嘿~~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://quanxi613.github.io/2015/07/05/async-js/" data-id="cibqkmytk0000eoxrvhufpxz9" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://quanxi613.github.io/2015/07/05/async-js/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/06/30/maintainable-javascript/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">重构你的JS代码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/07/05/async-js/" data-title="JS异步编程" data-url="http://quanxi613.github.io/2015/07/05/async-js/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS动画/">JS动画</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客搭建/">博客搭建</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/架构搭建/">架构搭建</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/07/05/async-js/">JS异步编程</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/30/maintainable-javascript/">重构你的JS代码</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/13/fe-tool-template/">FE-tool-template</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/06/js-animation/">JS动画基础</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/31/svg-learning/">SVG初探</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://qiudeqing.com/" target="_blank">qiu的博客</a>
+          </li>
+        
+          <li>
+            <a href="http://lingyu.wang/" target="_blank">天镶的博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 quanxi613<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="http://quanxi613.github.io/demo" class="mobile-nav-link">demo</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"quanxi613"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+</body>
+</html>
