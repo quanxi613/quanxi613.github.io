@@ -7,36 +7,36 @@
   <title>JS异步编程学习 | quanxi613的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="最近在系统学习JS异步编程的知识，本篇文章会持续更新，每次都会有新增内容
-事件监听器模式是广泛应用于异步编程的模式，是回调函数的事件化，也称作PubSub模式（发布/订阅模式）。node的EventEmitter对象，Backbone的事件化模型和jQuery的自定义事件都是这种模式的表现。
-下面先介绍一下PubSub模式的JS实现
 
-PubSub模式
+函数式编程
 
-很典型的click事件
-1dom.oncl">
+在异步编程之前需要回顾一下函数式编程，此为异步编程的基础。
+把函数作为参数，或将函数作为返回值的函数，如：
+12345function foo(x) &amp;#123;	return function() &amp;#123;		return x;	&amp;#125;;&amp;#125;
+此外函数式编程还能形成一种后续传递风格，比如：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS异步编程学习">
 <meta property="og:url" content="http://quanxi613.github.io/2015/07/05/async-js/index.html">
 <meta property="og:site_name" content="quanxi613的博客">
 <meta property="og:description" content="最近在系统学习JS异步编程的知识，本篇文章会持续更新，每次都会有新增内容
-事件监听器模式是广泛应用于异步编程的模式，是回调函数的事件化，也称作PubSub模式（发布/订阅模式）。node的EventEmitter对象，Backbone的事件化模型和jQuery的自定义事件都是这种模式的表现。
-下面先介绍一下PubSub模式的JS实现
 
-PubSub模式
+函数式编程
 
-很典型的click事件
-1dom.oncl">
-<meta property="og:updated_time" content="2015-07-07T11:50:41.000Z">
+在异步编程之前需要回顾一下函数式编程，此为异步编程的基础。
+把函数作为参数，或将函数作为返回值的函数，如：
+12345function foo(x) &amp;#123;	return function() &amp;#123;		return x;	&amp;#125;;&amp;#125;
+此外函数式编程还能形成一种后续传递风格，比如：">
+<meta property="og:updated_time" content="2015-07-23T14:33:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS异步编程学习">
 <meta name="twitter:description" content="最近在系统学习JS异步编程的知识，本篇文章会持续更新，每次都会有新增内容
-事件监听器模式是广泛应用于异步编程的模式，是回调函数的事件化，也称作PubSub模式（发布/订阅模式）。node的EventEmitter对象，Backbone的事件化模型和jQuery的自定义事件都是这种模式的表现。
-下面先介绍一下PubSub模式的JS实现
 
-PubSub模式
+函数式编程
 
-很典型的click事件
-1dom.oncl">
+在异步编程之前需要回顾一下函数式编程，此为异步编程的基础。
+把函数作为参数，或将函数作为返回值的函数，如：
+12345function foo(x) &amp;#123;	return function() &amp;#123;		return x;	&amp;#125;;&amp;#125;
+此外函数式编程还能形成一种后续传递风格，比如：">
   
     <link rel="alternative" href="/atom.xml" title="quanxi613的博客" type="application/atom+xml">
   
@@ -137,11 +137,24 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近在系统学习JS异步编程的知识，本篇文章会持续更新，每次都会有新增内容</p>
-<p>事件监听器模式是广泛应用于异步编程的模式，是回调函数的事件化，也称作PubSub模式（发布/订阅模式）。node的<code>EventEmitter</code>对象，Backbone的事件化模型和jQuery的自定义事件都是这种模式的表现。</p>
-<p>下面先介绍一下PubSub模式的JS实现</p>
+<blockquote>
+<p>函数式编程</p>
+</blockquote>
+<p>在异步编程之前需要回顾一下函数式编程，此为异步编程的基础。</p>
+<p>把函数作为参数，或将函数作为返回值的函数，如：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此外函数式编程还能形成一种后续传递风格，比如：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(x, bar)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> bar(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把函数bar作为参数传入，那么不同的bar函数就会得到不同的结果，这就使得函数的业务重点变为传入哪种回调函数了，不同的回调函数处理不同的业务逻辑。数组的<code>sort()</code>，<code>forEach()</code>，<code>map()</code>，<code>reduce()</code>，<code>reduceRight()</code>，<code>filter()</code>，<code>every()</code>，<code>some()</code>就是典型的例子。这种函数叫高阶函数。</p>
+<p>还有一类函数式编程的写法，由于有些时候会遇到重复定义相似函数的情况，通过引入一个新函数，让这个函数像工厂一样批量创建这些相似函数，那么就会在一定程度上简化了代码，如下面的例子：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isType = <span class="function"><span class="keyword">function</span><span class="params">(type)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(obj)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> toString.call(obj) == <span class="string">'[object'</span> + type + <span class="string">']'</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isString = isType(<span class="string">'String'</span>);</span><br><span class="line"><span class="keyword">var</span> isFunction = isType(<span class="string">'Function'</span>);</span><br></pre></td></tr></table></figure>
+<p>上例实现了类型判断功能，通过上面的这种写法，我们可以创建具体的类型判断函数<code>isString()</code>和<code>isFunction()</code>。这种函数也叫偏函数，通过指定部分参数来产生一个新的定值函数。</p>
+<p>上面的函数式编程方式在异步编程中非常常见。</p>
 <blockquote>
 <p>PubSub模式</p>
 </blockquote>
+<p>事件监听器模式是广泛应用于异步编程的模式，是回调函数的事件化，也称作PubSub模式（发布/订阅模式）。node的<code>EventEmitter</code>对象，Backbone的事件化模型和jQuery的自定义事件都是这种模式的表现。</p>
+<p>下面先介绍一下PubSub模式的JS实现</p>
 <p>很典型的click事件</p>
 <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dom.onclick = clickHandler<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 <p>上面的过程完成了两件事，一、注册了事件click，二、添加了事件处理器，也就是当这个事件触发时要执行的回调函数</p>
@@ -149,14 +162,17 @@ var _hmt = _hmt || [];
 <p>我们自己实现一个PubSub模式</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PubSub</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.handlers = &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注册事件以及handler</span></span><br><span class="line">PubSub.prototype.on = <span class="function"><span class="keyword">function</span>(<span class="params">eventType,handler</span>) </span>&#123;</span><br><span class="line">	<span class="comment">//如果注册的事件之前没有存在过，那么新添进去</span></span><br><span class="line">	<span class="keyword">if</span> (!(eventType <span class="keyword">in</span> <span class="keyword">this</span>.handlers)) &#123;</span><br><span class="line">		<span class="keyword">this</span>.handlers[eventType] = [];  </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">this</span>.handlers[eventType].push(handler); <span class="comment">//将事件处理器作为数组存储，那么就会按照添加处理器的顺序来调用</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//触发事件，遍历所有事件处理器</span></span><br><span class="line">PubSub.prototype.emit = <span class="function"><span class="keyword">function</span>(<span class="params">eventType</span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> handlerArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);  <span class="comment">//取到除了eventType之外的所有参数，并转换为数组</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, len=<span class="keyword">this</span>.handlers[eventType].length; i&lt;len; i++) &#123;</span><br><span class="line">		<span class="comment">//对这个eventType执行注册进去的handler</span></span><br><span class="line">		<span class="keyword">this</span>.handlers[eventType][i].apply(<span class="keyword">this</span>, handlerArgs);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//返回这个对象</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pubsub = <span class="keyword">new</span> PubSub();</span><br><span class="line">pubsub.on(<span class="string">'myEvent'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'success!'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">pubsub.emit(<span class="string">'myEvent'</span>);</span><br></pre></td></tr></table></figure>
 <p>运行代码，console里打印出来success，表明调用成功。其中，由于<code>this.handlers[eventType][i].apply(this, handlerArgs);</code>，<code>handlerArgs</code>是数组，那么就可以实现一个事件执行多个事件处理器。</p>
-<p>是不是发现PubSub很简单啊？嘿嘿~~</p>
-<p>其实PubSub模式本身没有同步或异步调用的问题，node中的<code>emit()</code>调用大部分是通过事件循环而异步触发，因此，我们说PubSub广泛应用于异步编程。上面的思想就是node中<code>EventEmitter</code>对象的核心部分，未实现的部分只剩下移除事件处理器和附加一次性事件处理器。</p>
+<p>是不是发现PubSub很简单啊？</p>
+<p>其实PubSub模式本身没有同步或异步调用的问题，node中的<code>emit()</code>调用大部分是伴随事件循环而异步触发，因此，我们说PubSub广泛应用于异步编程。上面的思想就是node中<code>EventEmitter</code>对象的核心部分，未实现的部分只剩下移除事件处理器和附加一次性事件处理器。</p>
+<blockquote>
+<p>Promise</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://quanxi613.github.io/2015/07/05/async-js/" data-id="cic0n6jw90000e3xrhhj32wgh" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://quanxi613.github.io/2015/07/05/async-js/" data-id="cicgav5tm0000lexrpvmoiiwz" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
