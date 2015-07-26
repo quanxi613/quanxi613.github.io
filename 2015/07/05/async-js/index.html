@@ -26,7 +26,7 @@
 把函数作为参数，或将函数作为返回值的函数，如：
 12345function foo(x) &amp;#123;	return function() &amp;#123;		return x;	&amp;#125;;&amp;#125;
 此外函数式编程还能形成一种后续传递风格，比如：">
-<meta property="og:updated_time" content="2015-07-26T15:41:12.000Z">
+<meta property="og:updated_time" content="2015-07-26T15:53:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS异步编程学习">
 <meta name="twitter:description" content="最近在系统学习JS异步编程的知识，本篇文章会持续更新，每次都会有新增内容
@@ -169,13 +169,19 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>想象这样的场景，需要有两次异步请求，第二次的请求需要第一次请求的数据：</p>
 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: url1,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span><span class="params">(data)</span></span> &#123;</span><br><span class="line">        ajax(&#123;</span><br><span class="line">            url: url2,</span><br><span class="line">            <span class="type">data</span>: <span class="type">data</span>,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>如果接下来在回调函数里做进一步操作，那么嵌套的层数会越来多</p>
+<p>如果接下来在回调函数里做进一步操作，那么嵌套的层数会越来多。promise就用来解决这种问题。</p>
+<ul>
+<li>promise的操作只会处于3种状态：未完成态，完成态和失败态</li>
+<li>状态只会出现从未完成态向完成态或失败态转化，不可逆反，完成态和失败态之间不能互相转化。</li>
+<li>一个promise只能成功或失败一次，且状态无法改变</li>
+<li>若promise执行成功或失败后，为其添加的成功或失败的回调会立即执行</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://quanxi613.github.io/2015/07/05/async-js/" data-id="cicknlqvp0000dtxrcp4se4av" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://quanxi613.github.io/2015/07/05/async-js/" data-id="cicko0hh90000eexre7uu1hl9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
