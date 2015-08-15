@@ -6,22 +6,40 @@
   
   <title>jquery源码学习（一） | quanxi613的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="sizzle
+  <meta name="description" content="从整体上看，jquery源码的学习主要分为这几部分：
 
-复杂选择器的实现">
+定义的一些变量和函数
+为jquery对象添加的一些方法和属性
+extend jquery的继承方法
+jQuery.extent()：扩展一些工具和方法
+Sizzle：复杂选择器的实现
+Callbacks：回调对象 对函数的管理
+Deferred：延迟对象 对异步的管理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jquery源码学习（一）">
 <meta property="og:url" content="http://quanxi613.github.io/2015/08/13/jquery-code1/index.html">
 <meta property="og:site_name" content="quanxi613的博客">
-<meta property="og:description" content="sizzle
+<meta property="og:description" content="从整体上看，jquery源码的学习主要分为这几部分：
 
-复杂选择器的实现">
-<meta property="og:updated_time" content="2015-08-15T15:40:07.000Z">
+定义的一些变量和函数
+为jquery对象添加的一些方法和属性
+extend jquery的继承方法
+jQuery.extent()：扩展一些工具和方法
+Sizzle：复杂选择器的实现
+Callbacks：回调对象 对函数的管理
+Deferred：延迟对象 对异步的管理">
+<meta property="og:updated_time" content="2015-08-15T15:54:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery源码学习（一）">
-<meta name="twitter:description" content="sizzle
+<meta name="twitter:description" content="从整体上看，jquery源码的学习主要分为这几部分：
 
-复杂选择器的实现">
+定义的一些变量和函数
+为jquery对象添加的一些方法和属性
+extend jquery的继承方法
+jQuery.extent()：扩展一些工具和方法
+Sizzle：复杂选择器的实现
+Callbacks：回调对象 对函数的管理
+Deferred：延迟对象 对异步的管理">
   
     <link rel="alternative" href="/atom.xml" title="quanxi613的博客" type="application/atom+xml">
   
@@ -121,16 +139,22 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>sizzle</p>
-</blockquote>
-<p>复杂选择器的实现</p>
+        <p>从整体上看，jquery源码的学习主要分为这几部分：</p>
+<ul>
+<li>定义的一些变量和函数</li>
+<li>为jquery对象添加的一些方法和属性</li>
+<li>extend jquery的继承方法</li>
+<li><code>jQuery.extent()</code>：扩展一些工具和方法</li>
+<li>Sizzle：复杂选择器的实现</li>
+<li>Callbacks：回调对象 对函数的管理</li>
+<li>Deferred：延迟对象 对异步的管理</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://quanxi613.github.io/2015/08/13/jquery-code1/" data-id="cidd8d17h000ecqxrosrsq34d" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://quanxi613.github.io/2015/08/13/jquery-code1/" data-id="cidd8uyhy000edhxr02ct7uu1" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
