@@ -34,7 +34,7 @@ Deferred：延迟对象 对异步的管理
 support：功能检测 判断浏览器版本
 data()：数据缓存
 queu">
-<meta property="og:updated_time" content="2015-08-17T15:29:12.000Z">
+<meta property="og:updated_time" content="2015-08-17T15:34:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery源码学习（一）">
 <meta name="twitter:description" content="从整体上看，jquery源码的学习主要分为这几部分：
@@ -186,12 +186,13 @@ var _hmt = _hmt || [];
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jQuery.<span class="keyword">fn</span>.init.prototype = jQuery.<span class="keyword">fn</span>;</span><br></pre></td></tr></table></figure>
 <p>源码中又定义了<code>jQuery.fn = jQuery.prototype</code>，那么上面的语句等价于</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jQuery.<span class="keyword">prototype</span>.init.<span class="keyword">prototype</span> = jQuery.<span class="keyword">prototype</span>;</span><br></pre></td></tr></table></figure>
+<p>把jquery的原型赋给了初始化函数的原型，那么上面<code>jQuery().dosomething()</code>的写法就合法了</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://quanxi613.github.io/2015/08/13/jquery-code1/" data-id="cidg2upul000ekbxrbuu6e6t1" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://quanxi613.github.io/2015/08/13/jquery-code1/" data-id="cidg31yem000el6xrrey7cu9v" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
