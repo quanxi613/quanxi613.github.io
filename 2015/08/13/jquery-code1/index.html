@@ -34,7 +34,7 @@ Deferred：延迟对象 对异步的管理
 support：功能检测 判断浏览器版本
 data()：数据缓存
 queu">
-<meta property="og:updated_time" content="2015-08-15T16:44:37.000Z">
+<meta property="og:updated_time" content="2015-08-17T15:29:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery源码学习（一）">
 <meta name="twitter:description" content="从整体上看，jquery源码的学习主要分为这几部分：
@@ -169,12 +169,29 @@ var _hmt = _hmt || [];
 <li>offset()：位置方法，尺寸方法</li>
 <li>jquery支持模块化的部分</li>
 </ul>
+<blockquote>
+<p>jQuery.fn.init</p>
+</blockquote>
+<p>源码中的片段(v2.1.4)：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"> selector, context </span>) </span>&#123;</span><br><span class="line">    <span class="comment">// The jQuery object is actually just the init constructor 'enhanced'</span></span><br><span class="line">    <span class="comment">// Need init if jQuery is called (just allow error to be thrown if not included)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init( selector, context );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line">  <span class="comment">// The current version of jQuery being used</span></span><br><span class="line">  jquery: version,</span><br><span class="line"></span><br><span class="line">  <span class="constructor"><span class="keyword">constructor</span>: jQuery,</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init = jQuery.fn.init = <span class="keyword">function</span>( selector, context ) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> match, elem;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init.prototype = jQuery.fn;</span><br></pre></td></tr></table></figure>
+<p>分析：</p>
+<p>普通常用的面向对象的简单写法是：</p>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Demo</span><span class="params">()</span> &#123;</span>&#125;</span><br><span class="line"></span><br><span class="line">Demo.prototype.init = <span class="function"><span class="keyword">function</span><span class="params">()</span> &#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line">Demo.prototype.dosomething = <span class="function"><span class="keyword">function</span><span class="params">()</span> &#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">var demo = new Demo<span class="params">()</span>;</span><br><span class="line">demo.init<span class="params">()</span>;</span><br><span class="line">demo.dosomething<span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+<p>而jquery中我们经常调用方法的方式是这样的：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">jquery</span><span class="class">.css</span>()<span class="class">.hide</span>();</span><br></pre></td></tr></table></figure>
+<p>那么如何改造上面常用的面向对象的写法呢？</p>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jQuery</span><span class="params">()</span> &#123;</span></span><br><span class="line">  return new jQuery.prototype.init<span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jQuery.prototype.init = <span class="function"><span class="keyword">function</span><span class="params">()</span> &#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line">jQuery.prototype.dosomething = <span class="function"><span class="keyword">function</span><span class="params">()</span> &#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">jQuery<span class="params">()</span>.dosomething<span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+<p>由于构造函数中return了<code>new jQuery.prototype.init()</code>，相当于返回了new出来的一个对象，同时执行了init方法，那么就可以接着链式调用下一个方法<code>dosomething()</code>了。</p>
+<p>当然只这么写还是有问题，看上面的源码片段中还有这么几句等价于下面的写法：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jQuery.<span class="keyword">fn</span>.init.prototype = jQuery.<span class="keyword">fn</span>;</span><br></pre></td></tr></table></figure>
+<p>源码中又定义了<code>jQuery.fn = jQuery.prototype</code>，那么上面的语句等价于</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jQuery.<span class="keyword">prototype</span>.init.<span class="keyword">prototype</span> = jQuery.<span class="keyword">prototype</span>;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://quanxi613.github.io/2015/08/13/jquery-code1/" data-id="ciddanz7d000egfxrswv0o1td" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://quanxi613.github.io/2015/08/13/jquery-code1/" data-id="cidg2upul000ekbxrbuu6e6t1" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -187,6 +204,15 @@ var _hmt = _hmt || [];
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/08/17/jquery-code1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a href="/2015/07/05/async-js/" id="article-nav-older" class="article-nav-link-wrap">
@@ -224,7 +250,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -234,6 +260,10 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/08/17/jquery-code1/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2015/08/13/jquery-code1/">jquery源码学习（一）</a>
@@ -249,10 +279,6 @@ var _hmt = _hmt || [];
         
           <li>
             <a href="/2015/06/13/fe-tool-template/">FE-tool-template</a>
-          </li>
-        
-          <li>
-            <a href="/2015/06/06/js-animation/">JS动画基础</a>
           </li>
         
       </ul>
