@@ -4,17 +4,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/6 | quanxi613的博客</title>
+  <title>webpack-react入门 | quanxi613的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="quanxi613的博客">
-<meta property="og:url" content="http://quanxi613.github.io/archives/2015/06/index.html">
+  <meta name="description" content="react是传说中最热门的框架, webpack呢又是比较火的一款模块加载器兼打包工具, 入门学习了一些东西, 在此记录一下
+React虚拟DOM机制在平时的web开发中, 我们经常会跟DOM操作打交道, 然而复杂和频繁的DOM操作很容易造成性能问题
+虚拟DOM是React引入的一个机制, 用React进行开发时, 所有DOM的构造都是通过虚拟DOM进行的
+
+每当有数据发生变化时, React会重">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack-react入门">
+<meta property="og:url" content="http://quanxi613.github.io/2016/07/25/react-webpack-build/index.html">
 <meta property="og:site_name" content="quanxi613的博客">
-<meta property="og:description">
+<meta property="og:description" content="react是传说中最热门的框架, webpack呢又是比较火的一款模块加载器兼打包工具, 入门学习了一些东西, 在此记录一下
+React虚拟DOM机制在平时的web开发中, 我们经常会跟DOM操作打交道, 然而复杂和频繁的DOM操作很容易造成性能问题
+虚拟DOM是React引入的一个机制, 用React进行开发时, 所有DOM的构造都是通过虚拟DOM进行的
+
+每当有数据发生变化时, React会重">
+<meta property="og:updated_time" content="2016-07-25T15:08:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="quanxi613的博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="webpack-react入门">
+<meta name="twitter:description" content="react是传说中最热门的框架, webpack呢又是比较火的一款模块加载器兼打包工具, 入门学习了一些东西, 在此记录一下
+React虚拟DOM机制在平时的web开发中, 我们经常会跟DOM操作打交道, 然而复杂和频繁的DOM操作很容易造成性能问题
+虚拟DOM是React引入的一个机制, 用React进行开发时, 所有DOM的构造都是通过虚拟DOM进行的
+
+每当有数据发生变化时, React会重">
   
     <link rel="alternative" href="/atom.xml" title="quanxi613的博客" type="application/atom+xml">
   
@@ -88,92 +101,92 @@ var _hmt = _hmt || [];
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/06/30/maintainable-javascript/" class="archive-article-date">
-  <time datetime="2015-06-29T16:00:00.000Z" itemprop="datePublished">06-30</time>
+      <section id="main"><article id="post-react-webpack-build" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/25/react-webpack-build/" class="article-date">
+  <time datetime="2016-07-24T16:00:00.000Z" itemprop="datePublished">2016-07-25</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/06/30/maintainable-javascript/">重构你的JS代码</a>
+    <h1 class="article-title" itemprop="name">
+      webpack-react入门
     </h1>
   
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JS/">JS</a>
-  </div>
+        <p>react是传说中最热门的框架, webpack呢又是比较火的一款模块加载器兼打包工具, 入门学习了一些东西, 在此记录一下</p>
+<h3 id="React">React</h3><h4 id="虚拟DOM机制">虚拟DOM机制</h4><p>在平时的web开发中, 我们经常会跟DOM操作打交道, 然而复杂和频繁的DOM操作很容易造成性能问题</p>
+<p>虚拟DOM是React引入的一个机制, 用React进行开发时, 所有DOM的构造都是通过虚拟DOM进行的</p>
+<ul>
+<li><p>每当有数据发生变化时, React会重新构建整个DOM树, 重建过程中, React会将当前整个DOM树与上次的DOM树作对比, 仅将需要变化的部分进行实际的浏览器更新</p>
+</li>
+<li><p>批处理虚拟DOM的刷新, 在一个事件循环内的两次数据变化会被合并. 比如连续的将节点内容从A变成B, 又从B变成A, React认为UI没有发生变化</p>
+</li>
+<li><p>虚拟DOM是内存数据, 性能极高, 对实际DOM的操作仅仅是有变化的部分(Diff), 开发人员不再需要关注某个数据的变化如何更新到一个或多个具体的DOM元素，而只需要关心在任意一个数据状态下，整个界面是如何Render的</p>
+</li>
+</ul>
+<h4 id="组件化">组件化</h4><p>React推荐以组件的方式去重新思考UI构成，将UI上每一个功能相对独立的模块定义成组件，然后将小的组件通过组合或者嵌套的方式构成大的组件，最终完成整体UI的构建</p>
+<p>在React中，你按照界面模块自然划分的方式来组织和编写你的代码，对于评论界面而言，整个UI是一个通过小组件构成的大组件，每个组件只关心自己部分的逻辑，彼此独立。</p>
+<p>React认为一个组件应该具有如下特征:</p>
+<ul>
+<li><p>可组合（Composeable）：一个组件易于和其它组件一起使用，或者嵌套在另一个组件内部。如果一个组件内部创建了另一个组件，那么说父组件拥有（own）它创建的子组件，通过这个特性，一个复杂的UI可以拆分成多个简单的UI组件</p>
+</li>
+<li><p>可重用（Reusable）：每个组件都是具有独立功能的，它可以被使用在多个UI场景</p>
+</li>
+<li><p>可维护（Maintainable）：每个小的组件仅仅包含自身的逻辑，更容易被理解和维护</p>
+</li>
+</ul>
+<h4 id="数据流">数据流</h4><p>React实现了单向相应的数据流, 从而减少了重复代码</p>
+<h3 id="webpack">webpack</h3><p>webpack是一款打包工具, 除了拥有丰富的插件外, 还有一套loader系统, 使得它能够支持多种规范的加载方式, 包括ES6/CommonJs/AMD等方式, 这是grunt和gulp所不具备的</p>
+<h4 id="安装webpack">安装webpack</h4><p><code>npm install -g webpack</code></p>
+<h4 id="配置webpack">配置webpack</h4><p>需要一个配置文件<code>webpack.config.js</code>, </p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://quanxi613.github.io/2016/07/25/react-webpack-build/" data-id="cir266awo0006qzxrgwvdsbh0" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://quanxi613.github.io/2016/07/25/react-webpack-build/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/30/jquery-file-upload-bugs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">jquery file upload使用过程中遇到的bug总结</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/06/13/fe-tool-template/" class="archive-article-date">
-  <time datetime="2015-06-12T16:00:00.000Z" itemprop="datePublished">06-13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/06/13/fe-tool-template/">FE-tool-template</a>
-    </h1>
-  
 
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/架构搭建/">架构搭建</a>
-  </div>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/06/06/js-animation/" class="archive-article-date">
-  <time datetime="2015-06-05T16:00:00.000Z" itemprop="datePublished">06-06</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/06/06/js-animation/">JS动画基础</a>
-    </h1>
-  
-
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JS动画/">JS动画</a>
-  </div>
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/07/25/react-webpack-build/" data-title="webpack-react入门" data-url="http://quanxi613.github.io/2016/07/25/react-webpack-build/"></div>
+  </section>
 </section>
       
       <aside id="sidebar">
